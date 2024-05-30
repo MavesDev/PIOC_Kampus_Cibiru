@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$connection = mysqli_connect("localhost", "root", "", "db_pioc");
+$connection = mysqli_connect("localhost", "root", "", "pioc");
 
 if(isset($_POST['save_data'])){
     $gambar = $_FILES['gambar']['name'];
