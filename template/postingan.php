@@ -28,7 +28,7 @@
                     <h3 class="title-heading mt-4">Pusat Informasi Kampus Cibiru</h3>
                     <p class="text-muted f-17 mt-3">Jendela Informasi Terdepan Kampus Cibiru yang selalu
                         <i><b>up-to-date</b></i> di genggaman Anda! <br>Dapatkan Semua Informasi dengan Mudah Melalui
-                        Website yang user-friendly
+                        Website yang user-friendly!
                     </p>
 
                     <img src="images/home-border.png" height="15" class="mt-3" alt="">
