@@ -51,7 +51,7 @@
             ?>
                     <div class="col-lg-4">
                         <div class="services-box p-4 mt-4">
-                            <img src="../imgUpload/<?= $data['gambar']; ?>" class="img-thumbnail mx-auto d-block" alt="random-image">
+                            <img src="../imgUpload/detail.png" class="img-thumbnail mx-auto d-block" alt="random-image">
                             <h5 class="mt-4"><?= $data['nama_kegiatan']; ?></h5>
                             <p class="text-muted mt-3"><?= $data['deskripsi']; ?></p>
                             <div class="mt-3">
