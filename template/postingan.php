@@ -41,7 +41,7 @@
         <div class="row mt-5 pt-4">
 
             <?php
-            $connection = mysqli_connect("localhost", "root", "", "db_pioc");
+            $connection = mysqli_connect("localhost", "root", "", "pioc");
 
             $fetch_image_query = "SELECT * FROM postingan ";
             $fetch_image_query_run = mysqli_query($connection, $fetch_image_query);
@@ -68,23 +68,6 @@
             <?php endforeach; ?>
             <?php endif; ?>
 
-            <div class="col-lg-4">
-                <div class="services-box p-4 mt-4">
-                    <img src="imgUpload/<?= $data['gambar']; ?>" class="img-thumbnail mx-auto d-block"
-                        alt="random-image">
-                    <h5 class="mt-4"><?= $data['nama_kegiatan']; ?></h5>
-                    <p class="text-muted mt-3"><?= $data['deskripsi']; ?></p>
-                    <div class="mt-3">
-                        <a href="" class="text-primary f-4" type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            <i class="mdi mdi-heart"></i>
-                            <i class="mdi mdi-comment ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <?php endforeach; ?>
-            <?php endif; ?>
         </div>
     </div>
 </section>
