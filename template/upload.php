@@ -14,7 +14,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../pioc2/php/code.php" method="POST" enctype="multipart/form-data" id="myform">
+                    <form action="../pioc_kampus_cibiru/php/code.php" method="POST" enctype="multipart/form-data" id="myform">
                         <div class="form-group mb-3">
                             <label for="">Upload</label>
                             <input type="file" class="form-control" name="gambar" id="inputGroupFile02">
