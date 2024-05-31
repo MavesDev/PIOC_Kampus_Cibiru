@@ -15,7 +15,7 @@ if(isset($_POST['save_data'])){
         $_SESSION['status'] = "Maaf "."<b>$fileName</b>"." Telah Tersedia, Silahkan Ganti Nama File Gambar";
         header("location: ../index.php");
     } else {
-        $insert_query = "INSERT INTO `postingan`(`nama_kegiatan`, `gambar`, `deskripsi`, `status`, `waktu_posting`, `id_kategori`, `id_user`, `jenis_postingan`, `harga`, `suka`) VALUES ('$judul','$gambar','$deskripsi','0','$waktu','$kategori','1','Test','0','1')";
+        $insert_query = "CALL AddNewPost('$judul','$gambar','$deskripsi','0','$waktu','$kategori','1','Test','0','1')";
 
         $insert_query_run = mysqli_query($connection, $insert_query);
     
