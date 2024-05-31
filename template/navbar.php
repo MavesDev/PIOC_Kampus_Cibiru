@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark nav-sticky">
     <div class="container">
         <!-- LOGO -->
-        <a class="navbar-brand logo text-uppercase" href="index.html">
+        <a class="navbar-brand logo text-uppercase" href="index.php">
             <img src="images/logo-dark.png" alt="" height="22">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
