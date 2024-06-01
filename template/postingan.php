@@ -106,7 +106,7 @@
                 </li>
             <?php endif; ?>
             </ul>
-        </nav>
+            </nav>
     </div>
 </section>
 
