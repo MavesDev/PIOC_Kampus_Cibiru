@@ -34,7 +34,7 @@
 
             <ul class="navbar-nav navbar-center">
                 <li class="nav-item">
-                    <a href="" class="nav-link">Log In</a>
+                    <a href="login.php" class="nav-link">Log In</a>
                 </li>
                 <li class="nav-item d-inline-block d-lg-none">
                     <a href="" class="nav-link">Sign Up</a>
