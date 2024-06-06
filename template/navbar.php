@@ -18,7 +18,9 @@
                             <!-- <span class="visually">unread messages</span> -->
                         </span>
                     </button>
-                    <div class="nf-message" id="notifications">Nothing</div>
+                    <div class="rounded me-5" style="position: absolute; z-index: 9999; margin-left: -10rem">
+                        <div class="nf-message border-success mt-3 shadow p-3 mb-5 bg-body-tertiary rounded w-100 p-3" id="notifications" style="max-height: 40em; overflow-y: auto;"><b>Nothing</b></div>
+                    </div>
                 </div>
             </ul>
 
