@@ -30,10 +30,13 @@ function showNotifications() {
         success: function (data) {
             const contentData = JSON.parse(data);
             $('#notifications').html('');
-            console.log(contentData);
     
             if (contentData.length > 0) {
-                $('#numHead').html(contentData[0].total);
+                if (contentData.total == 0) {
+                    $('#numHead').html("");
+                } else {
+                    $('#numHead').html(contentData[0].total);
+                }
     
                 for (let i = 1; i < contentData.length; i++) {
                     let date = contentData[i].date;
@@ -67,7 +70,14 @@ function showNotifications() {
                     $('#notifications').append(resultDiv);
                 }
             } else {
-                $('#notifications').html("<p>No Notification</p>");
+                let isNull = `
+                        <a href="#">
+                            <div class="">
+                                Tidak ada notifikasi
+                            </div>
+                        </a>
+                    `;
+                $('#notifications').append(isNull);
             }
         },
         error: function (xhr, status, error) {
