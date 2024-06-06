@@ -60,7 +60,7 @@
                                                         </div>
                                                         <div class="mt-4 mb-0 text-center">
                                                             <p class="mb-0">Don't have an account ? <a
-                                                                    href="register.php" class="text-success">Sign
+                                                                    href="registrasi.php" class="text-success">Sign
                                                                     in</a></p>
                                                         </div>
                                                     </form>
