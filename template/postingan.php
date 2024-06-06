@@ -1,9 +1,8 @@
 <?php
 
 include "php/code.php";
+
 if( isset($_GET["id"]) ) {
-    addLike($_GET);
-    die();
     if(addLike($_GET) > 0) {
         echo "
             <script>
@@ -63,9 +62,19 @@ if( isset($_GET["id"]) ) {
         <div class="row mt-5 pt-4">
 
             <?php
-            $connection = mysqli_connect("localhost", "root", "", "db_pioc");
+            $connection = mysqli_connect("localhost", "root", "", "pioc");
 
-            $fetch_image_query = "SELECT * FROM postingan ";
+            $jumlahDataPerHalaman = 2;
+            $result = mysqli_query($connection, "SELECT * FROM postingan");
+            $jumlahData = mysqli_num_rows($result);
+            $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+            // var_dump($jumlahHalaman);
+
+            $activePage = (isset($_GET['page'])) ? $_GET['page'] : 1;
+
+            $awalData = ($jumlahDataPerHalaman * $activePage) - $jumlahDataPerHalaman;
+
+            $fetch_image_query = "SELECT * FROM postingan LIMIT $awalData, $jumlahDataPerHalaman";
             $fetch_image_query_run = mysqli_query($connection, $fetch_image_query);
 
             ?>
@@ -77,24 +86,58 @@ if( isset($_GET["id"]) ) {
                     <img src="imgUpload/<?= $data['gambar']; ?>" class="img-thumbnail mx-auto d-block"
                         alt="random-image">
                     <h5 class="mt-4"><?= $data['nama_kegiatan']; ?></h5>
-                    <p class="text-muted mt-3"><?= $data['deskripsi']; ?></p>
+                    <p class="text-muted mt-3"><?=   $data['deskripsi']; ?></p>
+                    <?php $idPost = $data['id_postingan'] ?>
                     <div class="mt-3">
-                        <a href="post.php?id=<?= $_SESSION["id"] ?>" class="text-primary f-4" class="btn btn-primary"
-                            name="like">
+                        <a href="post.php?id=<?= $_SESSION["id"] ?>&id_post=<?= $data["id_postingan"] ?>"
+                            class="text-primary f-4" class="btn btn-primary" name="like">
                             <i class="mdi mdi-heart"></i>
-                            <small>12</small>
+                            <?php $result = query("SELECT COUNT(id_suka) AS jumlahLike FROM `suka` WHERE id_postingan = $idPost"); ?>
+                            <small><?= $result[0]["jumlahLike"] ?></small>
                         </a>
-                        <a href="" class="text-primary f-4" type="submit" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
+                        <a href="comment.php?id_post=<?= $data["id_postingan"] ?>" class="text-primary f-4"
+                            class="btn btn-primary">
                             <i class="mdi mdi-comment ms-2"></i>
-                            <small>8</small>
+                            <?php $result = query("SELECT COUNT(id_komentar) AS jumlahKomentar FROM `komentar` WHERE id_postingan = $idPost"); ?>
+                            <small><?= $result[0]["jumlahKomentar"] ?></small>
                         </a>
                     </div>
                 </div>
             </div>
             <?php endforeach; ?>
             <?php endif; ?>
+
         </div>
+        <nav aria-label="Page navigation example" class="mt-5">
+            <ul class="pagination justify-content-center">
+                <?php if ($activePage > 1) : ?>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<?= $activePage - 1; ?>">Previous</a>
+                </li>
+                <?php else : ?>
+                <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                </li>
+                <?php endif; ?>
+                <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
+                <?php if ($i == $activePage) : ?>
+                <li class=" page-item"><a class="page-link active" href="?page=<?= $i; ?>"><?= $i ?></a>
+                </li>
+                <?php else : ?>
+                <li class="page-item"><a class="page-link" href="?page=<?= $i; ?>"><?= $i ?></a></li>
+                <?php endif; ?>
+                <?php endfor; ?>
+                <?php if ($activePage < $jumlahHalaman) : ?>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<?= $activePage + 1; ?>">Next</a>
+                </li>
+                <?php else : ?>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+                <?php endif; ?>
+            </ul>
+        </nav>
     </div>
 </section>
 

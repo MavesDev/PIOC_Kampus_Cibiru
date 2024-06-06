@@ -4,7 +4,7 @@
 // Atur Title
 $title = 'Login';
 
-ob_start();
+ob_start(); 
 // Atur Content Yang Mau Disimpen
 include 'template/login.php';
 $content = ob_get_clean();

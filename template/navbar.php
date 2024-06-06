@@ -2,34 +2,24 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark nav-sticky">
     <div class="container">
         <!-- LOGO -->
-        <a class="navbar-brand logo text-uppercase" href="index.html">
+        <a class="navbar-brand logo text-uppercase" href="index.php">
             <img src="images/logo-dark.png" alt="" height="22">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <i class="mdi mdi-menu"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ms-auto navbar-center" id="mySidenav">
-
-                <li class="nav-item">
-                    <a href="#home" class="nav-link smoothlink">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#services" class="nav-link smoothlink">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#pricing" class="nav-link smoothlink">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#team" class="nav-link smoothlink">Team</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#clients" class="nav-link smoothlink">Clients</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link smoothlink">Contact</a>
-                </li>
+                <div class="nf-area">
+                    <button type="button" class="btn btn-primary position-relative p-2" id="nf-btn">
+                        <i class="bi bi-bell"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="numHead">
+                            99+
+                            <!-- <span class="visually">unread messages</span> -->
+                        </span>
+                    </button>
+                    <div class="nf-message" id="notifications">Nothing</div>
+                </div>
             </ul>
 
             <ul class="navbar-nav navbar-center">
