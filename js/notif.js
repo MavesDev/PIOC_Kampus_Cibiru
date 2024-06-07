@@ -30,9 +30,10 @@ function showNotifications() {
         success: function (data) {
             const contentData = JSON.parse(data);
             $('#notifications').html('');
+            console.log(contentData);
     
-            if (contentData.length > 0) {
-                if (contentData.total == 0) {
+            if (contentData.length > 1) {
+                if (contentData[0].total === 0) {
                     $('#numHead').html("");
                 } else {
                     $('#numHead').html(contentData[0].total);
@@ -70,10 +71,11 @@ function showNotifications() {
                     $('#notifications').append(resultDiv);
                 }
             } else {
+                $('#numHead').html("");
                 let isNull = `
                         <a href="#">
-                            <div class="">
-                                Tidak ada notifikasi
+                            <div class="text-black">
+                                👋Halo!, <b>Tidak Ada Notifikasi Terbaru untuk Saat Ini Yah</b>, Mohon Cek Secara Berkala untuk Persetujuan dari Permintaan Postingan Kamu Yah🤩
                             </div>
                         </a>
                     `;
@@ -97,6 +99,6 @@ function seenNotification() {
         cache: false,
         succes: function(data){
 
-        }
-    });
+        }
+    });
 }
