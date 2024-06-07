@@ -1,5 +1,5 @@
 <div class="account-home-btn d-none d-sm-block">
-    <a href="index-1.html" class="text-primary"><i class="mdi mdi-home h1"></i></a>
+    <a href="index.php" class="text-primary"><i class="mdi mdi-home h1"></i></a>
 </div>
 
 <section class="bg-account-pages vh-100">
@@ -28,7 +28,7 @@
                                         <div class="col-lg-11">
                                             <div class="p-4">
                                                 <div class="text-center mt-3">
-                                                    <a href="index-1.html"><img src="images/logopioc.png" alt=""
+                                                    <a href="index.php"><img src="images/logopioc.png" alt=""
                                                             height="22"></a>
                                                     <p class="text-muted mt-3">Sign in to continue to Thamza.</p>
                                                 </div>

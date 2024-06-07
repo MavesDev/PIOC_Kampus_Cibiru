@@ -33,7 +33,7 @@
                 </li>
             </ul>
             <div class="navbar-button d-none d-lg-inline-block">
-                <a href="" class="btn btn-sm btn-soft-primary btn-round">Sign Up</a>
+                <a href="registrasi.php" class="btn btn-sm btn-soft-primary btn-round">Sign Up</a>
             </div>
         </div>
     </div>
