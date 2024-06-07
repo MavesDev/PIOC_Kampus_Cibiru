@@ -5,6 +5,7 @@
 $title = 'Home Page';
 
 ob_start();
+session_start();
 // Atur Content Yang Mau Disimpen
 include 'template/postingan.php';
 $content = ob_get_clean();
