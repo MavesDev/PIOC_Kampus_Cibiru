@@ -47,6 +47,7 @@
     </div> -->
 
     <!-- javascript -->
+    <script src="js/script.js"></script>
     <script src="js/upload.js"></script>
     <script src="js/notif.js"></script>
     <script src="js/jquery.min.js"></script>

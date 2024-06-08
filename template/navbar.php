@@ -21,25 +21,25 @@
                             <!-- <span class="visually">unread messages</span> -->
                         </span>
                     </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#" style="padding: 12px 0px;">Notification 1</a></li>
-                        <li><a class="dropdown-item" href="#" style="padding: 12px 0px;">Notification 2</a></li>
-                    </ul>
-                </li>
-            </ul>
-
-            <ul class="navbar-nav navbar-center">
-                <li class="nav-item">
-                    <a href="login.php" class="nav-link">Log In</a>
-                </li>
-                <li class="nav-item d-inline-block d-lg-none">
-                    <a href="" class="nav-link">Sign Up</a>
-                </li>
-            </ul>
-            <div class="navbar-button d-none d-lg-inline-block">
-                <a href="" class="btn btn-sm btn-soft-primary btn-round">Sign Up</a>
-            </div>
+                    <div class="rounded me-5" style="position: absolute; z-index: 9999; margin-left: -10rem">
+                        <div class="nf-message border-success mt-3 shadow p-3 mb-5 bg-body-tertiary rounded w-100 p-3"
+                            id="notifications" style="max-height: 40em; overflow-y: auto;"><b>Nothing</b></div>
+                    </div>
         </div>
+        </ul>
+
+        <ul class="navbar-nav navbar-center">
+            <li class="nav-item">
+                <a href="login.php" class="nav-link">Log In</a>
+            </li>
+            <li class="nav-item d-inline-block d-lg-none">
+                <a href="" class="nav-link">Sign Up</a>
+            </li>
+        </ul>
+        <div class="navbar-button d-none d-lg-inline-block">
+            <a href="" class="btn btn-sm btn-soft-primary btn-round">Sign Up</a>
+        </div>
+    </div>
     </div>
 </nav>
 <!-- Navbar End -->
