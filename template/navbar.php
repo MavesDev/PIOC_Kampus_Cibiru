@@ -11,9 +11,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ms-auto navbar-center" id="mySidenav">
-                <li class="nav-item dropdown">
-                    <button class="btn btn-secondary dropdown" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                <div class="nf-area">
+                    <button type="button" class="btn btn-primary position-relative p-2" id="nf-btn">
                         <i class="bi bi-bell"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                             id="numHead">
@@ -25,21 +24,21 @@
                         <div class="nf-message border-success mt-3 shadow p-3 mb-5 bg-body-tertiary rounded w-100 p-3"
                             id="notifications" style="max-height: 40em; overflow-y: auto;"><b>Nothing</b></div>
                     </div>
-        </div>
-        </ul>
+                </div>
+            </ul>
 
-        <ul class="navbar-nav navbar-center">
-            <li class="nav-item">
-                <a href="login.php" class="nav-link">Log In</a>
-            </li>
-            <li class="nav-item d-inline-block d-lg-none">
-                <a href="" class="nav-link">Sign Up</a>
-            </li>
-        </ul>
-        <div class="navbar-button d-none d-lg-inline-block">
-            <a href="" class="btn btn-sm btn-soft-primary btn-round">Sign Up</a>
+            <ul class="navbar-nav navbar-center">
+                <li class="nav-item">
+                    <a href="login.php" class="nav-link">Log In</a>
+                </li>
+                <li class="nav-item d-inline-block d-lg-none">
+                    <a href="" class="nav-link">Sign Up</a>
+                </li>
+            </ul>
+            <div class="navbar-button d-none d-lg-inline-block">
+                <a href="" class="btn btn-sm btn-soft-primary btn-round">Sign Up</a>
+            </div>
         </div>
-    </div>
     </div>
 </nav>
 <!-- Navbar End -->
