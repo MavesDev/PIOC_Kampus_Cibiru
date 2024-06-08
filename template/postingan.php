@@ -82,7 +82,7 @@ if (isset($_GET["id"])) {
 
                 $awalData = ($jumlahDataPerHalaman * $activePage) - $jumlahDataPerHalaman;
 
-                $fetch_image_query = "SELECT * FROM postingan LIMIT $awalData, $jumlahDataPerHalaman";
+                $fetch_image_query = "SELECT * FROM postingan WHERE status = 'Approved' LIMIT $awalData, $jumlahDataPerHalaman";
                 $fetch_image_query_run = mysqli_query($connection, $fetch_image_query);
 
                 ?>
