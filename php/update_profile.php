@@ -4,10 +4,10 @@ session_start();
 include "connection.php";
 
 // masukan id_use kedalam $_SESSION di form page nya
-$id_user = $_SESSION["id"];
+$id_user = $_SESSION["id_user"];
 
 $new_nama_user = $_POST["new_nama_user"];
-// $new_bio = $_POST["new_bio"];
+$new_bio = $_POST["new_bio"];
 $new_email = $_POST["new_email"];
 
 if (!empty($new_nama_user)) {
