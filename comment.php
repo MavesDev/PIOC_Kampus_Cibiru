@@ -9,9 +9,9 @@ $title = 'Comment Page';
 
 ob_start();
 // Atur Content Yang Mau Disimpen
-include 'template/comment.php';
+include 'template/user/comment.php';
 $content = ob_get_clean();
 
 // Abaikan, Ini Buat Nampilin Template
-include 'template/template.php';
+include 'template/user/template.php';
 ?>

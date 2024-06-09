@@ -1,5 +1,5 @@
 <?php
-include "koneksi.php";
+include "php/connection.php";
 
 if ($_POST) {
     $id_postingan = $_POST['id_postingan'];

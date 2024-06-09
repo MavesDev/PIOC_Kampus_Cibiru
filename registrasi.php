@@ -6,9 +6,9 @@ $title = 'Registrasi';
 
 ob_start();
 // Atur Content Yang Mau Disimpen
-include 'template/registrasi.php';
+include 'template/user/registrasi.php';
 $content = ob_get_clean();
 
 // Abaikan, Ini Buat Nampilin Template
-include 'template/template-nonav.php';
+include 'template/user/template-nonav.php';
 ?>

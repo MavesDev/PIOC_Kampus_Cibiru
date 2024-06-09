@@ -1,6 +1,6 @@
 <?php
 
-include "koneksi.php";
+include "php/connection.php";
 
 $id_user = $_GET['number'];
 var_dump($_GET);

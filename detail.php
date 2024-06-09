@@ -6,9 +6,9 @@ $title = 'Detail';
 
 ob_start();
 // Atur Content Yang Mau Disimpen
-include 'template/detail.php';
+include 'template/user/detail.php';
 $content = ob_get_clean();
 
 // Abaikan, Ini Buat Nampilin Template
-include 'template/template.php';
+include 'template/user/template.php';
 ?>
