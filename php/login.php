@@ -26,9 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Memeriksa apakah ada hasil yang cocok
     if ($result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($result);
         // Login berhasil
         $_SESSION['email'] = $email;
-        header("Location: ../post.php"); // Ganti dengan halaman setelah login
+        $_SESSION['id_user'] = $row["id_user"];
+        $_SESSION['nama_user'] = $row["nama_user"];
+        header("Location: ../homepage.php"); // Ganti dengan halaman setelah login
         exit();
     } else {
         // Login gagal
