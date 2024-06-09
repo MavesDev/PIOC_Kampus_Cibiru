@@ -46,7 +46,6 @@ body {
   height: 100vh;
 }
 
-
 /* ---------- HEADER ---------- */
 
 .header {
@@ -63,7 +62,6 @@ body {
 .menu-icon {
   display: none;
 }
-
 
 /* ---------- SIDEBAR ---------- */
 
@@ -91,7 +89,6 @@ body {
   text-decoration: none;
   color: #000;
 }
-
 
 .sidebar-title {
   display: flex;
@@ -143,10 +140,7 @@ body {
   z-index: 12 !important;
 }
 
-
 /* ---------- MAIN ---------- */
-
-
 
 .main-container {
   grid-area: main;
@@ -182,11 +176,9 @@ body {
   box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
 }
 
-
 .card:first-child {
   border-left: 7px solid #e31b1b;
 }
-
 
 .card:nth-child(2) {
   border-left: 7px solid #f5b74f;
@@ -244,6 +236,14 @@ body {
   font-weight: 600;
 }
 
+.post-costum {
+  max-height: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
 
 /* ---------- SCROLLBARS ---------- */
 
@@ -266,9 +266,7 @@ body {
   background-color: #a5aaad;
 }
 
-
 /* ---------- MEDIA QUERIES ---------- */
-
 
 /* Medium <= 992px */
 @media screen and (max-width: 992px) {
