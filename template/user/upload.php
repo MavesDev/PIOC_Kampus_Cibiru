@@ -1,12 +1,10 @@
 <div class="d-flex justify-content-center mt-4">
-    <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Tambah Postingan
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -15,6 +13,15 @@
                 </div>
                 <div class="modal-body">
                     <form action="../pioc_kampus_cibiru/php/code.php" method="POST" enctype="multipart/form-data" id="myform">
+                        <?php
+                        include "php/connection.php";
+
+                        $queryKategori = mysqli_query($connection, "SELECT id_kategori, nama_kategori FROM kategori");
+                        if (!$queryKategori) {
+                            die("Query gagal dijalankan: " . mysqli_error($connection));
+                        }
+                        ?>
+
                         <div class="form-group mb-3">
                             <label for="">Upload</label>
                             <input type="file" class="form-control" name="gambar" id="inputGroupFile02">
@@ -30,20 +37,20 @@
 
                         <div class="form-group mb-3">
                             <label for="">Deskripsi</label>
-                            <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Postingan"
-                                id="floatingTextarea"></textarea>
+                            <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Postingan" id="floatingTextarea"></textarea>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="">Kategori</label>
-                            <select class="form-select" name="kategori" aria-label="Default select example">
-                                <option selected>Pilih Kategori</option>
-                                <option value="1">Bootcamp</option>
-                                <option value="2">Lomba</option>
-                                <option value="3">Seminar</option>
+                            <label for="id_kategori">Kategori</label>
+                            <select class="form-select" id="kategori" name="kategori" aria-label="Default select example">
+                                <?php while ($row = mysqli_fetch_assoc($queryKategori)) : ?>
+                                    <option value="<?php echo $row['id_kategori']; ?>">
+                                        <?php echo $row['nama_kategori']; ?>
+                                    </option>
+                                <?php endwhile; ?>
                             </select>
-                        </div>
 
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
