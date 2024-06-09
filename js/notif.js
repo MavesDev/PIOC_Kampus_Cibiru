@@ -32,12 +32,8 @@ function showNotifications() {
             $('#notifications').html('');
             console.log(contentData);
     
-            if (contentData.length > 1) {
-                if (contentData[0].total === 0) {
-                    $('#numHead').html("");
-                } else {
-                    $('#numHead').html(contentData[0].total);
-                }
+            if (contentData.length > 0) {
+                $('#numHead').html(contentData[0].total);
     
                 for (let i = 1; i < contentData.length; i++) {
                     let date = contentData[i].date;
@@ -71,15 +67,7 @@ function showNotifications() {
                     $('#notifications').append(resultDiv);
                 }
             } else {
-                $('#numHead').html("");
-                let isNull = `
-                        <a href="#">
-                            <div class="text-black">
-                                👋Halo!, <b>Tidak Ada Notifikasi Terbaru untuk Saat Ini Yah</b>, Mohon Cek Secara Berkala untuk Persetujuan dari Permintaan Postingan Kamu Yah🤩
-                            </div>
-                        </a>
-                    `;
-                $('#notifications').append(isNull);
+                $('#notifications').html("<p>No Notification</p>");
             }
         },
         error: function (xhr, status, error) {
@@ -99,6 +87,6 @@ function seenNotification() {
         cache: false,
         succes: function(data){
 
-        }
-    });
+        }
+    });
 }

@@ -1,5 +1,4 @@
 <?php 
-session_start();
 $connection = mysqli_connect("localhost", "root", "", "pioc");
 
 if(isset($_POST['save_data'])){
@@ -94,4 +93,6 @@ function addLike($data) {
     return mysqli_affected_rows($connection);
 }
 
+ 
+ 
 ?>
