@@ -1,6 +1,6 @@
 <?php
 
-include "php/connection.php";
+include "koneksi.php";
 
 $id_postingan = $_GET['number'];
 var_dump($_GET);

@@ -6,9 +6,9 @@ $title = 'Login';
 
 ob_start(); 
 // Atur Content Yang Mau Disimpen
-include 'template/user/login.php';
+include 'template/login.php';
 $content = ob_get_clean();
 
 // Abaikan, Ini Buat Nampilin Template
-include 'template/user/template-nonav.php';
+include 'template/template-nonav.php';
 ?>

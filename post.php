@@ -7,9 +7,9 @@ $title = 'Postingan';
 
 ob_start();
 // Atur Content Yang Mau Disimpen
-include 'template/user/postingan.php';
+include 'template/postingan.php';
 $content = ob_get_clean();
 
 // Abaikan, Ini Buat Nampilin Template
-include 'template/user/template.php';
+include 'template/template.php';
 ?>

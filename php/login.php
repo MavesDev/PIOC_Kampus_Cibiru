@@ -1,42 +1,42 @@
 <?php
+include "../php/connection.php";
+
 session_start();
-$servername = "localhost"; // Ganti dengan nama server database Anda
-$username = "root"; // Ganti dengan username database Anda
-$password = ""; // Ganti dengan password database Anda
-$dbname = "pioc"; // Ganti dengan nama database Anda
 
-// Membuat koneksi ke database
-$conn = new mysqli($servername, $username, $password, $dbname);
+$email = ($_POST ['email']);
+$pass = ($_POST ['password']);
 
-// Mengecek koneksi
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+//Query data
+$query = $conn->query("SELECT * FROM user WHERE email = '$email'");
+$data = $query->fetch_array();
+$_SESSION['data-user'] = $data['id_user'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+//Uji Jika Username Terdaftar
+if ($data) {
+    //Cek Password salah atau tidak
+    if ($pass == $data['password']) {
+        
+        //Jika password sesuai
+        $_SESSION['role'] = $data['role'];
 
-    // Menyiapkan query SQL untuk memeriksa email dan password
-    $sql = "SELECT * FROM user WHERE email = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $email, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // Memeriksa apakah ada hasil yang cocok
-    if ($result->num_rows > 0) {
-        // Login berhasil
-        $_SESSION['email'] = $email;
-        header("Location: ../post.php"); // Ganti dengan halaman setelah login
-        exit();
-    } else {
-        // Login gagal
-        echo "Email atau password salah.";
+        //Uji Level
+        if ($data['role'] == 'Admin') {
+            $_SESSION['admin'] = $data['email'];
+            header("Location: ../dashboard.php");
+        }
+        else if ($data['role'] == 'User') {
+            $_SESSION['user'] = $data['email'];
+            header("Location:../index.php");
+        }
     }
+    else {
 
-    $stmt->close();
+        echo 'Login Gagal' ;
+    }
+}
+else {
+    echo 'Email tidak ada' ;
 }
 
-$conn->close();
+
 ?>

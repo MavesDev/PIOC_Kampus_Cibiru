@@ -1,4 +1,13 @@
 <?php
+
+// session_start();
+
+// if(!isset($_SESSION['user'])){
+//     header("Location:index.php");
+
+//     exit();
+// }
+
 // Nanti Kalau Mau Buat Tampilan Baru, Tinggal Copas File Ini Ganti Nama. Contoh liat ada File Post.php
 
 // Atur Title
