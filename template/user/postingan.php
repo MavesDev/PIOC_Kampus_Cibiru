@@ -78,7 +78,7 @@ if (isset($_GET["id"])) {
                 include './php/connection.php';
 
                 $jumlahDataPerHalaman = 2;
-                $result = mysqli_query($conn, "SELECT * FROM postingan");
+                $result = mysqli_query($conn, "SELECT * FROM postingan WHERE status = 'Approved'");
                 $jumlahData = mysqli_num_rows($result);
                 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
                 // var_dump($jumlahHalaman);

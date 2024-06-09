@@ -11,5 +11,5 @@ include 'template/profile.php';
 $content = ob_get_clean();
 
 // Abaikan, Ini Buat Nampilin Template
-include 'template/template-nonav.php';
+include 'template/user/template-nonav.php';
 ?>
