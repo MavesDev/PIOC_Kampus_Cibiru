@@ -2,6 +2,10 @@
 
 include "php/code.php";
 
+// ID pengguna harus didapat dari sumber yang valid, misalnya login atau request
+// Untuk contoh ini, kita akan menggunakan ID pengguna tetap (misalnya, $user_id = 1)
+$user_id = 1; // Gantilah dengan ID pengguna yang sebenarnya
+
 if (isset($_GET["id"])) {
     if (addLike($_GET) > 0) {
         echo "
@@ -87,9 +91,15 @@ if (isset($_GET["id"])) {
                 $fetch_image_query_run = mysqli_query($connection, $fetch_image_query);
 
                 ?>
-
                 <?php if (mysqli_num_rows($fetch_image_query_run) > 0) : ?>
                 <?php foreach ($fetch_image_query_run as $data) : ?>
+                <?php $idPost = $data['id_postingan'] ?>
+                <?php 
+                    $bookmarkQuery = "SELECT * FROM bookmark WHERE id_user = $user_id AND id_postingan = $idPost";
+                    $bookmarkResult = mysqli_query($conn, $bookmarkQuery);
+                    $isBookmarked = mysqli_num_rows($bookmarkResult) > 0;  
+                ?>
+
                 <div class="col-lg-4" id="container-post" style="max-height: 420px;">
                     <div class="services-box p-4 mt-4">
                         <a href="detail.php?id_post=<?= $data['id_postingan'] ?>">
@@ -114,6 +124,17 @@ if (isset($_GET["id"])) {
                                 <?php $result = query("SELECT COUNT(id_komentar) AS jumlahKomentar FROM `komentar` WHERE id_postingan = $idPost"); ?>
                                 <small><?= $result[0]["jumlahKomentar"] ?></small>
                             </a>
+                            <?php if ($isBookmarked): ?>
+                            <a href="./php/bookmark.php?action=unbookmark&id_post=<?= $data["id_postingan"] ?>"
+                                class="btn btn-danger" title="Unbookmark">
+                                <i class="mdi mdi-bookmark"></i> Unbookmark
+                            </a>
+                            <?php else: ?>
+                            <a href="./php/bookmark.php?action=bookmark&id_post=<?= $data["id_postingan"] ?>"
+                                class="btn btn-primary" title="Bookmark">
+                                <i class="mdi mdi-bookmark-outline"></i> Bookmark
+                            </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -155,124 +176,5 @@ if (isset($_GET["id"])) {
     </div>
 </section>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg">
-        <div class=" modal-content px-3" style="height: 500px;">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Comment</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="comment-content">
-                    <div class="d-flex align-middle justify-content-center mb-3" style="max-width: 100%;">
-                        <div class="img-comment me-3">
-                            <img src="https://picsum.photos/50" class="rounded" alt="random-image">
-                        </div>
-                        <div>
-                            <div class="main-comment d-flex flex-column">
-                                <h6>Nama Orang</h6>
-                                <p style="margin-bottom: 0.8rem;">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nemo odit
-                                    rem. Ea velit
-                                    laboriosam tenetur optio quas facere ipsam!
-                                </p>
-
-                                <div class="d-flex align-middle justify-content-center mb-3">
-                                    <div class="img-comment me-3">
-                                        <img src="https://picsum.photos/40" class="rounded" alt="random-image">
-                                    </div>
-                                    <div>
-                                        <div class="main-comment" style="font-size: 0.9rem;">
-                                            <h6>Nama Orang</h6>
-                                            <p style="margin-bottom: 0.5rem;">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-                                                nemo
-                                                odit
-                                                rem. Ea velit
-                                                laboriosam tenetur optio quas facere ipsam!
-                                            </p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <a href="#" id="2" class="text-secondary me-2" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal2"><i class="mdi mdi-reply me-1"></i><small
-                                                    class="text-muted me-1">Reply</small></a>
-                                            <p style="margin-bottom: 0;"><small class="text-muted">Last updated 3 mins
-                                                    ago</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="text-secondary me-2"><small class="text-muted me-1">Sembunyikan
-                                    balasan</small></a>
-                            <div class="d-flex">
-                                <a href="#" class="text-secondary me-2"><i class="mdi mdi-reply me-1"></i><small
-                                        class="text-muted me-1">Reply</small></a>
-                                <p><small class="text-muted me-3">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex align-middle justify-content-center mb-3" style="max-width: 100%;">
-                        <div class="img-comment me-3">
-                            <img src="https://picsum.photos/50" class="rounded" alt="random-image">
-                        </div>
-                        <div>
-                            <div class="main-comment d-flex flex-column">
-                                <h6>Nama Orang</h6>
-                                <p style="margin-bottom: 0.8rem;">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nemo odit
-                                    rem. Ea velit
-                                    laboriosam tenetur optio quas facere ipsam!
-                                </p>
-
-                                <div class="d-flex align-middle justify-content-center mb-3">
-                                    <div class="img-comment me-3">
-                                        <img src="https://picsum.photos/40" class="rounded" alt="random-image">
-                                    </div>
-                                    <div>
-                                        <div class="main-comment" style="font-size: 0.9rem;">
-                                            <h6>Nama Orang</h6>
-                                            <p style="margin-bottom: 0.5rem;">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-                                                nemo
-                                                odit
-                                                rem. Ea velit
-                                                laboriosam tenetur optio quas facere ipsam!
-                                            </p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <a href="#" class="text-secondary me-2"><i
-                                                    class="mdi mdi-reply me-1"></i><small
-                                                    class="text-muted me-1">Reply</small></a>
-                                            <p style="margin-bottom: 0;"><small class="text-muted">Last updated 3 mins
-                                                    ago</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="text-secondary me-2"><small class="text-muted me-1">Sembunyikan
-                                    balasan</small></a>
-                            <div class="d-flex">
-                                <a href="#" class="text-secondary me-2"><i class="mdi mdi-reply me-1"></i><small
-                                        class="text-muted me-1">Reply</small></a>
-                                <p><small class="text-muted me-3">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <form action="" method="POST" id="commentForm">
-                <div class="modal-footer">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="inputAja" placeholder="Tulis Komentar"
-                            aria-label="Recipient's username" aria-describedby="commentSubmit" name="deskripsi">
-                        <button class=" btn btn-primary" type="submit" id="commentSubmit" name="addComment"
-                            form="commentForm">Kirim</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 </div>

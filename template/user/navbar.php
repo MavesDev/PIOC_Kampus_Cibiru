@@ -29,6 +29,11 @@
 
             <ul class="navbar-nav navbar-center">
                 <li class="nav-item">
+                    <a class="nav-link" href="bookmarks.php">
+                        <i class="fas fa-bookmark"></i> Bookmarks
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="login.php" class="nav-link">Log In</a>
                 </li>
                 <li class="nav-item d-inline-block d-lg-none">
