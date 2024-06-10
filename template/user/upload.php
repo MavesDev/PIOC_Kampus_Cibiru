@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center mt-4">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Tambah Postingan
+        <i class="bi bi-box-arrow-up" style="font-style: normal;"> Unggah Postingan</i>
     </button>
 
     <!-- Modal -->

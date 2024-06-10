@@ -3,19 +3,19 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-card text-center p-3 mb-2">
-                    <?php 
-                        include './php/connection.php';
-                        $fetch_image_query = "SELECT gambar FROM user";
-                        $fetch_image_query_run = mysqli_query($conn, $fetch_image_query);
+                    <?php
+                    include './php/connection.php';
+                    $fetch_image_query = "SELECT gambar FROM user";
+                    $fetch_image_query_run = mysqli_query($conn, $fetch_image_query);
                     ?>
                     <?php if (mysqli_num_rows($fetch_image_query_run) > 0) : ?>
-                    <?php foreach ($fetch_image_query_run as $data) : ?>
-                    <img style="width: 5rem;" class="rounded-circle img-fluid" src="imgProfile/<?= $data['gambar']; ?>"" alt="Profile Picture">
-                    <div>
-                        <h4 class="mt-3"><?= $_SESSION['nama_user'] ?></h4>
-                        <p><?= $_SESSION['bio'] ?></p>
-                    </div>
-                    <?php endforeach; ?>
+                        <?php foreach ($fetch_image_query_run as $data) : ?>
+                            <img style="width: 5rem;" class="rounded-circle img-fluid" src="imgProfile/<?= $data['gambar']; ?>"" alt=" Profile Picture">
+                            <div>
+                                <h4 class="mt-3"><?= $_SESSION['nama_user'] ?></h4>
+                                <p><?= $_SESSION['bio'] ?></p>
+                            </div>
+                        <?php endforeach; ?>
                     <?php endif; ?>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         Edit Foto
@@ -47,37 +47,46 @@
                     </div>
                 </div>
                 <div class="d-flex flex-column profile-card text-center p-3 mb-2  rounded-3">
-                    <a class="text-dark rounded-3 p-3 mb-2 bg-body-secondary" href="#">Edit Profile</a>
+                    <a class="text-dark rounded-3 p-3 mb-2 bg-body-secondary" href="profile.php">Edit Profile</a>
                     <a class="text-dark p-3 mb-2 bg-body-secondary" href="postinganSaya.php">Postingan Saya</a>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="sidebar">
-                    <h4>Lihat/Edit Profil</h4>
+                    <h4>Postingan Saya</h4>
                     <div class="alert alert-danger" role="alert">
-                        Silahkan edit profile anda secara berkala.
+                        Postingan yang sudah ada unggah muncul disini.
                     </div>
-                    <form action="php/update_profile.php" method="post">
-                        <div class="mb-3">
-                            <label for='new_nama_user'>Nama Lengkap</label>
-                            <input type='text' class='form-control' id='new_nama_user' name='new_nama_user' placeholder="<?= $_SESSION['nama_user'] ?>">
-                        </div>
-                        <div class="mb-3">
-                            <label for='new_email'>Email</label>
-                            <input type='email' class='form-control' id='new_email' name='new_email' placeholder="<?= $_SESSION['email'] ?>">
-                        </div>
-                        <div class="mb-3">
-                            <label for="disabledTextInput" class="form-label">Password</label>
-                            <input type="password" id='new_pass' name='new_pass' class="form-control" placeholder="<?= $_SESSION['password'] ?>">
-                        </div>
-                        <div class="mb-3">
-                            <label for='new_bio'>Bio</label>
-                            <textarea class="form-control" name="bio" id='new_bio' name='new_bio' placeholder="<?= $_SESSION['bio'] ?>" id="floatingTextarea"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            Update Data
-                        </button>
-                    </form>
+                    <div class="row pt-4" id="container-post">
+                        <?php
+                        include './php/connection.php';
+                        $id_user = $_SESSION['id_user'];
+
+                        $fetch_image_query = "SELECT * FROM postingan WHERE id_user = '$id_user'";
+                        $fetch_image_query_run = mysqli_query($conn, $fetch_image_query);
+
+                        ?>
+                        <?php if (mysqli_num_rows($fetch_image_query_run) > 0) : ?>
+                            <?php foreach ($fetch_image_query_run as $data) : ?>
+                                <div class="col-lg-4" id="container-post">
+                                    <div class="services-box p-4 mt-4" max-height="500px">
+                                        <a href="#">
+                                            <img src="imgUpload/<?= $data['gambar']; ?>" class="img-thumbnail mx-auto d-block" alt="random-image" style="max-height: 200px; max-width: 200px;">
+                                        </a>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="#">
+                                                <h5 class="mt-4 text-primary"><?= $data['nama_kegiatan']; ?>
+                                                </h5>
+                                            </a>
+                                        </div>
+                                        <div class="post-costum">
+                                            <p class="text-muted mt-3"><?= $data['deskripsi']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
