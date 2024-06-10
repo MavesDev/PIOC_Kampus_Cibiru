@@ -1,17 +1,6 @@
 <?php
-session_start();
-$servername = "localhost"; // Ganti dengan nama server database Anda
-$username = "root"; // Ganti dengan username database Anda
-$password = ""; // Ganti dengan password database Anda
-$dbname = "pioc"; // Ganti dengan nama database Anda
 
-// Membuat koneksi ke database
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Mengecek koneksi
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include "code.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
@@ -19,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Menyiapkan query SQL untuk memeriksa email dan password
     $sql = "SELECT * FROM user WHERE email = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
+    $stmt = $connection->prepare($sql);
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
     $result = $stmt->get_result();

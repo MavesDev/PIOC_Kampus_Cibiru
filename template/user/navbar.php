@@ -28,21 +28,29 @@
             </ul>
 
             <ul class="navbar-nav navbar-center">
+                <?php if(isset($_SESSION["nama_user"])) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="bookmarks.php">
                         <i class="fas fa-bookmark"></i> Bookmarks
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="login.php" class="nav-link">Log In</a>
+                    <!-- ---------------------------------------------------------------------- page profile disini -->
+                    <a href="profile.php" class="nav"><?php echo $_SESSION['nama_user']; ?></a>
                 </li>
+
+                <?php if(!isset($_SESSION["nama_user"])) ?>
                 <li class="nav-item d-inline-block d-lg-none">
                     <a href="" class="nav-link">Sign Up</a>
                 </li>
+
+                <?php endif ; ?>
             </ul>
+            <?php if(isset($_SESSION["nama_user"])) : ?>
             <div class="navbar-button d-none d-lg-inline-block">
-                <a href="registrasi.php" class="btn btn-sm btn-soft-primary btn-round">Sign Up</a>
+                <a href="login.php" class="btn btn-sm btn-soft-primary btn-round">Log out</a>
             </div>
+            <?php endif ; ?>
         </div>
     </div>
 </nav>
