@@ -1,13 +1,17 @@
 <?php
 // Nanti Kalau Mau Buat Tampilan Baru, Tinggal Copas File Ini Ganti Nama. Contoh liat ada File Post.php
 session_start();
-$_SESSION["id"] = 1;
 
 include "php/connection.php";
 function seenNotifications($data)
 {
     global $conn;
     mysqli_query($conn, "UPDATE notifikasi SET dilihat='seen' WHERE uniqueid='$data'");
+}
+
+if (!isset($_SESSION["id_user"])) {
+    header("Location: login.php");
+    exit;
 }
 
 if (isset($_GET['notification'])) {

@@ -29,8 +29,8 @@
                                             <div class="p-4">
                                                 <div class="text-center mt-3">
                                                     <a href="index.php"><img src="images/logopioc.png" alt=""
-                                                            height="22"></a>
-                                                    <p class="text-muted mt-3">Sign in to continue to Thamza.</p>
+                                                            height="60"></a>
+                                                    <p class="text-muted mt-3">Log in to continue to Pioc.</p>
                                                 </div>
                                                 <div class="p-3 custom-form">
                                                     <form action="php/login.php" method="post">
@@ -44,24 +44,24 @@
                                                             <input type="password" class="form-control" id="password"
                                                                 name="password" placeholder="Enter password" required>
                                                         </div>
-                                                        <div class="custom-control custom-checkbox">
+                                                        <!-- <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" class="custom-control-input"
                                                                 id="customControlInline">
                                                             <label class="custom-control-label"
                                                                 for="customControlInline">Remember me</label>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="mt-3">
                                                             <button type="submit" class="btn btn-primary btn-block">Log
                                                                 In</button>
                                                         </div>
-                                                        <div class="mt-4 pt-1 mb-0 text-center">
+                                                        <!-- <div class="mt-4 pt-1 mb-0 text-center">
                                                             <a href="password-forget.html" class="text-dark"><i
                                                                     class="mdi mdi-lock"></i> Forgot your password?</a>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="mt-4 mb-0 text-center">
                                                             <p class="mb-0">Don't have an account ? <a
                                                                     href="registrasi.php" class="text-success">Sign
-                                                                    in</a></p>
+                                                                    up</a></p>
                                                         </div>
                                                     </form>
                                                 </div>

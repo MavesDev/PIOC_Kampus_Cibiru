@@ -1,7 +1,10 @@
 <?php
 // Nanti Kalau Mau Buat Tampilan Baru, Tinggal Copas File Ini Ganti Nama. Contoh liat ada File Post.php
 session_start();
-
+if (!isset($_SESSION["id_user"])) {
+    header("Location: login.php");
+    exit;
+}
 // Atur Title
 $title = 'Profile';
 

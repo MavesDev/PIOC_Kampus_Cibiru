@@ -3,7 +3,7 @@
     <div class="container">
         <!-- LOGO -->
         <a class="navbar-brand logo text-uppercase" href="index.php">
-            <img src="images/logo-dark.png" alt="" height="22">
+            <img src="images/logopioc.png" alt="" height="60">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <i class="mdi mdi-menu"></i>

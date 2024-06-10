@@ -27,6 +27,7 @@
     <!-- magnific pop-up -->
     <link rel="stylesheet" type="text/css" href="css/magnific-popup.css" />
     <link href="css/style.min.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>

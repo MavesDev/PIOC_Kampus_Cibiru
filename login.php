@@ -1,6 +1,9 @@
 <?php
 // Nanti Kalau Mau Buat Tampilan Baru, Tinggal Copas File Ini Ganti Nama. Contoh liat ada File Post.php
-
+if (isset($_SESSION["id_user"])) {
+    header("Location: post.php");
+    exit;
+}
 // Atur Title
 $title = 'Login';
 

@@ -11,7 +11,7 @@
                     ?>
                     <?php if (mysqli_num_rows($fetch_image_query_run) > 0) : ?>
                     <?php foreach ($fetch_image_query_run as $data) : ?>
-                    <img style="width: 5rem;" class="rounded-circle img-fluid" src="imgProfile/<?= $data['gambar']; ?>"" alt="Profile Picture">
+                    <img style="width: 5rem; height: 5rem;" class="rounded-circle img-fluid" src="imgProfile/<?= $data['gambar']; ?>"" alt="Profile Picture">
                     <div>
                         <h4 class="mt-3"><?= $data['nama_user'] ?></h4>
                         <p><?= $data['bio'] ?></p>

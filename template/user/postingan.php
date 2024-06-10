@@ -9,7 +9,7 @@ if (!isset($_SESSION["id_user"])) {
 
 // ID pengguna harus didapat dari sumber yang valid, misalnya login atau request
 // Untuk contoh ini, kita akan menggunakan ID pengguna tetap (misalnya, $user_id = 1)
-$user_id = 1; // Gantilah dengan ID pengguna yang sebenarnya
+$user_id = $_SESSION['id_user']; // Gantilah dengan ID pengguna yang sebenarnya
 
 if (isset($_GET["id"])) {
     if (addLike($_GET) > 0) {
@@ -29,6 +29,34 @@ if (isset($_GET["id"])) {
 }
 
 ?>
+
+<style>
+    .pagination-costum .page-link {
+  color: #1ea59a !important;
+  /* Ubah warna teks */
+}
+
+.pagination-costum .page-link:hover {
+  color: #14857c !important;
+  /* Ubah warna teks saat hover */
+  background-color: #e9ecef;
+  /* Ubah warna background saat hover */
+}
+
+.pagination-costum .page-link.active {
+  background-color: #1ea59a !important;
+  /* Ubah warna background item aktif */
+  border-color: #1ea59a !important;
+  /* Ubah warna border item aktif */
+  color: white !important;
+  /* Ubah warna teks item aktif */
+}
+
+.pagination-costum .page-item.disabled .page-link {
+  color: #6c757d;
+  /* Ubah warna teks item tidak aktif */
+}
+</style>
 
 <section class="section bg-services" id="services">
     <div class="container">
@@ -133,12 +161,12 @@ if (isset($_GET["id"])) {
                                     <p class="mt-4 text-primary"><?= $kategori["nama_kategori"] ?></p>
                                 </div>
                                 <div class="post-costum">
-                                    <p class="text-muted mt-3"><?= $data['deskripsi']; ?></p>
+                                    <p style="height: 86px;" class="text-muted mt-3"><?= $data['deskripsi']; ?></p>
                                 </div>
                                 <?php $idPost = $data['id_postingan'] ?>
                                 <div class="mt-3 d-flex justify-content-between">
                                     <div>
-                                        <a href="post.php?id=<?= $_SESSION["id"] ?>&id_post=<?= $data["id_postingan"] ?>" class="text-primary f-4" class="btn btn-primary" name="like">
+                                        <a href="post.php?id=<?= $_SESSION["id_user"] ?>&id_post=<?= $data["id_postingan"] ?>" class="text-primary f-4" class="btn btn-primary" name="like">
                                             <i class="mdi mdi-heart"></i>
                                             <?php $result = query("SELECT COUNT(id_suka) AS jumlahLike FROM `suka` WHERE id_postingan = $idPost"); ?>
                                             <small><?= $result[0]["jumlahLike"] ?></small>
@@ -169,7 +197,7 @@ if (isset($_GET["id"])) {
 
         </div>
         <nav aria-label="Page navigation example" class="mt-5">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination pagination-costum justify-content-center">
                 <?php if ($activePage > 1) : ?>
                     <li class="page-item">
                         <a class="page-link" href="?page=<?= $activePage - 1; ?>">Previous</a>

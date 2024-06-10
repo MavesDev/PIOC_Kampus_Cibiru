@@ -1,4 +1,5 @@
 <?php
+session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -7,7 +8,7 @@ include 'connection.php';  // Pastikan jalur ke connection.php benar
 
 // ID pengguna dan postingan harus didapat dari sumber yang valid, misalnya login atau request
 // Untuk contoh ini, kita akan menggunakan ID pengguna tetap (misalnya, $user_id = 1)
-$user_id = 1; // Gantilah dengan ID pengguna yang sebenarnya
+$user_id = $_SESSION['id_user']; // Gantilah dengan ID pengguna yang sebenarnya
 $post_id = isset($_GET['id_post']) ? intval($_GET['id_post']) : 0; // Pastikan id_post valid
 
 if ($post_id <= 0) {

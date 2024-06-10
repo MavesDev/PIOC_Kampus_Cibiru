@@ -3,11 +3,11 @@ session_start();
 include './php/connection.php';
 
 // Periksa apakah pengguna sudah login
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['id_user'])) {
     die("Anda harus login untuk melihat bookmark.");
 }
 
-$user_id = $_SESSION['id'];
+$user_id = $_SESSION['id_user'];
 
 $query = "SELECT b.id_postingan, p.nama_kegiatan, p.deskripsi, p.gambar 
           FROM bookmark b
