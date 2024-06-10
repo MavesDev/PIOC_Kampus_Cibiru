@@ -7,8 +7,8 @@ if(isset($_POST['save_data'])){
     $judul = $_POST['judul'];
     $deskripsi = $_POST['deskripsi'];
     $kategori = $_POST['kategori'];
-    $waktu = date("Y-m-d H:i:s");
-
+    $datetime = new DateTime("now", new DateTimeZone("Asia/Jakarta"));
+    $waktu = $datetime->format("Y-m-d H:i:s");
 
     if (file_exists("../imgUpload/".$_FILES['gambar']['name'])) {
         $fileName = $_FILES['gambar']['name'];

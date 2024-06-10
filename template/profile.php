@@ -5,18 +5,18 @@
                 <div class="profile-card text-center p-3 mb-2">
                     <?php 
                         include './php/connection.php';
-                        $fetch_image_query = "SELECT gambar FROM user";
+                        $id_user = $_SESSION['id_user'];
+                        $fetch_image_query = "SELECT * FROM user WHERE id_user = '$id_user'";
                         $fetch_image_query_run = mysqli_query($conn, $fetch_image_query);
                     ?>
                     <?php if (mysqli_num_rows($fetch_image_query_run) > 0) : ?>
                     <?php foreach ($fetch_image_query_run as $data) : ?>
                     <img style="width: 5rem;" class="rounded-circle img-fluid" src="imgProfile/<?= $data['gambar']; ?>"" alt="Profile Picture">
                     <div>
-                        <h4 class="mt-3"><?= $_SESSION['nama_user'] ?></h4>
-                        <p><?= $_SESSION['bio'] ?></p>
+                        <h4 class="mt-3"><?= $data['nama_user'] ?></h4>
+                        <p><?= $data['bio'] ?></p>
                     </div>
-                    <?php endforeach; ?>
-                    <?php endif; ?>
+
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         Edit Foto
                     </button>
@@ -54,25 +54,25 @@
             <div class="col-md-8">
                 <div class="sidebar">
                     <h4>Lihat/Edit Profil</h4>
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert bg-success-subtle" role="alert">
                         Silahkan edit profile anda secara berkala.
                     </div>
-                    <form action="php/update_profile.php" method="post">
+                    <form action="php/update_profile.php" method="POST">
                         <div class="mb-3">
                             <label for='new_nama_user'>Nama Lengkap</label>
-                            <input type='text' class='form-control' id='new_nama_user' name='new_nama_user' placeholder="<?= $_SESSION['nama_user'] ?>">
+                            <input type='text' class='form-control' id='new_nama_user' name='new_nama_user' placeholder="<?= $data['nama_user'] ?>">
                         </div>
                         <div class="mb-3">
                             <label for='new_email'>Email</label>
-                            <input type='email' class='form-control' id='new_email' name='new_email' placeholder="<?= $_SESSION['email'] ?>">
+                            <input type='email' class='form-control' id='new_email' name='new_email' placeholder="<?= $data['email'] ?>">
                         </div>
                         <div class="mb-3">
                             <label for="disabledTextInput" class="form-label">Password</label>
-                            <input type="password" id='new_pass' name='new_pass' class="form-control" placeholder="<?= $_SESSION['password'] ?>">
+                            <input type="password" id='new_pass' name='new_pass' class="form-control" placeholder="<?= $data['password'] ?>">
                         </div>
                         <div class="mb-3">
                             <label for='new_bio'>Bio</label>
-                            <textarea class="form-control" name="bio" id='new_bio' name='new_bio' placeholder="<?= $_SESSION['bio'] ?>" id="floatingTextarea"></textarea>
+                            <textarea class="form-control" id='new_bio' name='new_bio' placeholder="<?= $data['bio'] ?>" id="floatingTextarea"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">
                             Update Data
@@ -82,4 +82,6 @@
             </div>
         </div>
     </div>
+    <?php endforeach; ?>
+    <?php endif; ?>
 </section>

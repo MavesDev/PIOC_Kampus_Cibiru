@@ -7,9 +7,9 @@ $title = 'Home Page';
 ob_start();
 session_start();
 // Atur Content Yang Mau Disimpen
-include 'template/postingan.php';
+include 'landing_page.php';
 $content = ob_get_clean();
 
 // Abaikan, Ini Buat Nampilin Template
-include 'template/template.php';
+// include 'template/template.php';
 ?>

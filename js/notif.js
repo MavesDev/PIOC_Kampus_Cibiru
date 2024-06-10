@@ -38,6 +38,7 @@ function showNotifications() {
                 } else {
                     $('#numHead').html(contentData[0].total);
                 }
+                
     
                 for (let i = 1; i < contentData.length; i++) {
                     let date = contentData[i].date;
@@ -61,7 +62,7 @@ function showNotifications() {
                     }
     
                     let resultDiv = `
-                        <a href="${url}?notification=${uniqueid}">
+                        <a href="${url}?notification=${uniqueid}" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <div class="alert alert-${dilihat}" role="alert" title="${date}">
                                 ${type}
                             </div>

@@ -5,7 +5,8 @@
                 <div class="profile-card text-center p-3 mb-2">
                     <?php
                     include './php/connection.php';
-                    $fetch_image_query = "SELECT gambar FROM user";
+                    $id_user = $_SESSION['id_user'];
+                    $fetch_image_query = "SELECT gambar FROM user WHERE id_user = '$id_user'";
                     $fetch_image_query_run = mysqli_query($conn, $fetch_image_query);
                     ?>
                     <?php if (mysqli_num_rows($fetch_image_query_run) > 0) : ?>
@@ -54,7 +55,7 @@
             <div class="col-md-8">
                 <div class="sidebar">
                     <h4>Postingan Saya</h4>
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert bg-success-subtle" role="alert">
                         Postingan yang sudah ada unggah muncul disini.
                     </div>
                     <div class="row pt-4" id="container-post">

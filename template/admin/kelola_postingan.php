@@ -1,4 +1,4 @@
-<?php
+    <?php
     include "php/connection.php";
     $row = mysqli_query($conn, "SELECT * FROM postingan WHERE status = '0'");
     $no = 1;

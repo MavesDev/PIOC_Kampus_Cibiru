@@ -43,6 +43,7 @@ if (!empty($new_nama_user)) {
     }
 }
 
+
 if (!empty($new_bio)) {
     $statement = "UPDATE user SET bio = '$new_bio' WHERE id_user = $id_user;";
     echo $statement . "<br>";

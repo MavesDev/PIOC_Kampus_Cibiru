@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['admin'])) {
+  header("Location:login.php");
+
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +69,7 @@
                     </li>
                 </a>
 
-                <a href="" style="text-decoration-line: none; color:#9799ab ">
+                <a href="logout.php" style="text-decoration-line: none; color:#9799ab ">
                     <li class="sidebar-list-item">
                         <span class="material-icons-outlined">logout</span> Logout
                     </li>
