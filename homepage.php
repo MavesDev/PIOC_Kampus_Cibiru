@@ -11,5 +11,5 @@ include 'template/user/postingan.php';
 $content = ob_get_clean();
 
 // Abaikan, Ini Buat Nampilin Template
-include 'template/template-logged_in.php';
+include 'template/user/navbar.php';
 ?>

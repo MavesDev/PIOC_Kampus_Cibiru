@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['email'] = $email;
         $_SESSION['id_user'] = $row["id_user"];
         $_SESSION['nama_user'] = $row["nama_user"];
-        header("Location: ../homepage.php"); // Ganti dengan halaman setelah login
+        header("Location: ../post.php"); // Ganti dengan halaman setelah login
         exit();
     } else {
         // Login gagal

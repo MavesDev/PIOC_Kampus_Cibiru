@@ -54,7 +54,7 @@
                 <a href="logout.php" class="btn btn-sm btn-soft-primary btn-round">Log out</a>
             </div>
             <?php elseif(!isset($_SESSION["nama_user"])) : ?>
-            <div class="navbar-button d-none d-lg-inline-block">
+            <div class="navbar-button d-none d-lg-inline-block" id="woi">
                 <a href="login.php" class="btn btn-sm btn-soft-primary btn-round">Log In</a>
             </div>
             <?php endif ; ?>

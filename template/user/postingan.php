@@ -2,6 +2,11 @@
 
 include "php/code.php";
 
+if( !isset($_SESSION["id_user"]) ) {
+	header("Location: login.php");
+	exit;
+}
+
 // ID pengguna harus didapat dari sumber yang valid, misalnya login atau request
 // Untuk contoh ini, kita akan menggunakan ID pengguna tetap (misalnya, $user_id = 1)
 $user_id = 1; // Gantilah dengan ID pengguna yang sebenarnya
