@@ -6,14 +6,14 @@
 <!-- Penjelasan Dikit, Jadi Semua Library Tinggal Simpen Disini Gausah Panggil2 Lagi -->
 
 <head>
-    <meta charset="utf-8" />
+<meta charset="utf-8" />
     <title><?php echo $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Premium Bootstrap 4 Landing Page Template" />
     <meta name="keywords" content="bootstrap 4, premium, marketing, multipurpose" />
     <meta content="Themesdesign" name="author" />
-    <!-- favicon -->    
-    <link rel="shortcut icon" href="../../images/favicon.png" type="image/x-icon">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico">
     <!-- css -->
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"

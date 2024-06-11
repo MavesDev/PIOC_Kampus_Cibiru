@@ -31,31 +31,31 @@ $data = $_GET["id_post"];
     <link href="css/style_costum.css" rel="stylesheet" type="text/css" />
 
     <style>
-        .pagination-costum .page-link {
-            color: #1ea59a !important;
-            /* Ubah warna teks */
-        }
+    .pagination-costum .page-link {
+        color: #1ea59a !important;
+        /* Ubah warna teks */
+    }
 
-        .pagination-costum .page-link:hover {
-            color: #14857c !important;
-            /* Ubah warna teks saat hover */
-            background-color: #e9ecef;
-            /* Ubah warna background saat hover */
-        }
+    .pagination-costum .page-link:hover {
+        color: #14857c !important;
+        /* Ubah warna teks saat hover */
+        background-color: #e9ecef;
+        /* Ubah warna background saat hover */
+    }
 
-        .pagination-costum .page-link.active {
-            background-color: #1ea59a !important;
-            /* Ubah warna background item aktif */
-            border-color: #1ea59a !important;
-            /* Ubah warna border item aktif */
-            color: white !important;
-            /* Ubah warna teks item aktif */
-        }
+    .pagination-costum .page-link.active {
+        background-color: #1ea59a !important;
+        /* Ubah warna background item aktif */
+        border-color: #1ea59a !important;
+        /* Ubah warna border item aktif */
+        color: white !important;
+        /* Ubah warna teks item aktif */
+    }
 
-        .pagination-costum .page-item.disabled .page-link {
-            color: #6c757d;
-            /* Ubah warna teks item tidak aktif */
-        }
+    .pagination-costum .page-item.disabled .page-link {
+        color: #6c757d;
+        /* Ubah warna teks item tidak aktif */
+    }
     </style>
 
 </head>
@@ -63,26 +63,27 @@ $data = $_GET["id_post"];
 <body data-spy="scroll" data-bs-target="#navbarCollapse">
 
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark nav-sticky">
-        <div class="container col">
-            <a class="navbar-brand logo text-uppercase" href="index.php">
-                <img src="images/logopioc.png" alt="" height="60">
+        <div class="container">
+            <!-- LOGO -->
+            <a class="navbar-brand logo text-uppercase" href="landing_page.php">
+                <img src="images/logopioc.png" alt="" height="50">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="mdi mdi-menu"></i>
             </button>
-            <div class="d-flex justify-content-end collapse navbar-collapse" id="navbarCollapse">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav navbar-center">
-
                     <li class="nav-item">
-                        <a class="nav-link" href="registrasi.php">
-                            <i class="fas fa-bookmark"></i> Sign Up
-                        </a>
-                    </li>
-                    <li class="nav-item" id="woi">
                         <a href="login.php" class="nav-link">Log In</a>
                     </li>
-
+                    <li class="nav-item d-inline-block d-lg-none">
+                        <a href="registrasi.php" class="nav-link">Sign Up</a>
+                    </li>
                 </ul>
+                <div class="navbar-button d-none d-lg-inline-block">
+                    <a href="registrasi.php" class="btn btn-sm btn-soft-primary btn-round">Sign Up</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -90,37 +91,36 @@ $data = $_GET["id_post"];
 
 
     <section class="section bg-services" id="services">
-    <div class="container w-50">
-        <?php
+        <div class="container w-50">
+            <?php
             $idPost = $data;
             $detailData = query("SELECT * FROM postingan WHERE id_postingan = $idPost");
         ?>
-        <?php foreach($detailData as $data) : ?>
-        <img src="imgUpload/<?= $data['gambar'];?>" class="img-fluid rounded">
-        <h4 class="mt-4"><?= $data['nama_kegiatan'];?></h4>
-        <p class="text-muted mt-3">
-            <?= $data['deskripsi'];?>
-        </p>
-        <div class="mt-3">
-            <a href="registrasi.php" class="text-primary f-2"
-                class="btn btn-primary" name="like">
-                <i class="mdi mdi-heart"></i>
-                <?php $result = query("SELECT COUNT(id_suka) AS jumlahLike FROM `suka` WHERE id_postingan = $idPost"); ?>
-                <small><?= $result[0]["jumlahLike"] ?></small>
-            </a>
-            <a href="registrasi.php" class="text-primary f-2" class="btn btn-primary">
-                <i class="mdi mdi-comment ms-2"></i>
-                <?php $result = query("SELECT COUNT(id_komentar) AS jumlahKomentar FROM `komentar` WHERE id_postingan = $idPost"); ?>
-                <small><?= $result[0]["jumlahKomentar"] ?></small>
-            </a>
+            <?php foreach($detailData as $data) : ?>
+            <img src="imgUpload/<?= $data['gambar'];?>" class="img-fluid rounded">
+            <h4 class="mt-4"><?= $data['nama_kegiatan'];?></h4>
+            <p class="text-muted mt-3">
+                <?= $data['deskripsi'];?>
+            </p>
+            <div class="mt-3">
+                <a href="registrasi.php" class="text-primary f-2" class="btn btn-primary" name="like">
+                    <i class="mdi mdi-heart"></i>
+                    <?php $result = query("SELECT COUNT(id_suka) AS jumlahLike FROM `suka` WHERE id_postingan = $idPost"); ?>
+                    <small><?= $result[0]["jumlahLike"] ?></small>
+                </a>
+                <a href="registrasi.php" class="text-primary f-2" class="btn btn-primary">
+                    <i class="mdi mdi-comment ms-2"></i>
+                    <?php $result = query("SELECT COUNT(id_komentar) AS jumlahKomentar FROM `komentar` WHERE id_postingan = $idPost"); ?>
+                    <small><?= $result[0]["jumlahKomentar"] ?></small>
+                </a>
+            </div>
+            <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
-    </div>
-</section>
+    </section>
 
 
     <!-- javascript -->
-     <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>

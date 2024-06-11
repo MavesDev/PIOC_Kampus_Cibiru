@@ -36,11 +36,14 @@ if ($action === 'bookmark') {
         $result = $stmt->execute();
 
         if ($result) {
+            header('location: ../post.php');
             echo "Bookmark berhasil ditambahkan.";
         } else {
+            header('location: ../post.php');
             echo "Terjadi kesalahan: " . $conn->error;
         }
     } else {
+        header('location: ../post.php');
         echo "Postingan sudah di-bookmark sebelumnya.";
     }
 
@@ -54,8 +57,10 @@ if ($action === 'bookmark') {
     $result = $stmt->execute();
 
     if ($result) {
+        header('location: ../post.php');
         echo "Bookmark berhasil dihapus.";
     } else {
+        header('location: ../post.php');
         echo "Terjadi kesalahan: " . $conn->error;
     }
 

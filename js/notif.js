@@ -1,23 +1,22 @@
 $(document).ready(function () {
-    // showNotifications();
-    // setInterval(showNotifications, 5000);
+  // showNotifications();
+  // setInterval(showNotifications, 5000);
 
-    $('#notifications').hide();
+  $("#notifications").hide();
 
-    $('#nf-btn').click(function(){
-        $('#notifications').toggle();
-        seenNotification();
-    });
+  $("#nf-btn").click(function () {
+    $("#notifications").toggle();
+    seenNotification();
+  });
 
-    $('#nf-btn').click(function(e){
-        e.stopPropagation();
-    })
+  $("#nf-btn").click(function (e) {
+    e.stopPropagation();
+  });
 
-    $('html').click(function(){
-        $('#notifications').hide();
-    });
+  $("html").click(function () {
+    $("#notifications").hide();
+  });
 });
-
 
 // function showNotifications() {
 //     $.ajax({
@@ -31,15 +30,14 @@ $(document).ready(function () {
 //             const contentData = JSON.parse(data);
 //             $('#notifications').html('');
 //             console.log(contentData);
-    
+
 //             if (contentData.length > 1) {
 //                 if (contentData[0].total === 0) {
 //                     $('#numHead').html("");
 //                 } else {
 //                     $('#numHead').html(contentData[0].total);
 //                 }
-                
-    
+
 //                 for (let i = 1; i < contentData.length; i++) {
 //                     let date = contentData[i].date;
 //                     let dilihat = contentData[i].dilihat;
@@ -50,17 +48,17 @@ $(document).ready(function () {
 //                     let type = contentData[i].type;
 //                     let uniqueid = contentData[i].uniqueid;
 //                     let url = contentData[i].url;
-    
+
 //                     if (type == 'contact') {
 //                         type = "Halo! ada pesan baru";
 //                     }
-    
+
 //                     if (dilihat == 'unseen') {
 //                         dilihat = 'success';
 //                     } else {
 //                         dilihat = 'dark';
 //                     }
-    
+
 //                     let resultDiv = `
 //                         <a href="${url}?notification=${uniqueid}" data-bs-toggle="modal" data-bs-target="#exampleModal">
 //                             <div class="alert alert-${dilihat}" role="alert" title="${date}">
@@ -68,7 +66,7 @@ $(document).ready(function () {
 //                             </div>
 //                         </a>
 //                     `;
-                    
+
 //                     $('#notifications').append(resultDiv);
 //                 }
 //             } else {
@@ -86,20 +84,17 @@ $(document).ready(function () {
 //         error: function (xhr, status, error) {
 //             console.error('AJAX error: ' + xhr, status, error);
 //         }
-//     });    
+//     });
 // }
 
-
 function seenNotification() {
-    $.ajax({
-        type: "POST",
-        url: "php/fetch.php",
-        data: {
-            key: '1234'
-        },
-        cache: false,
-        succes: function(data){
-
-        }
-    });
+  $.ajax({
+    type: "POST",
+    url: "php/fetch.php",
+    data: {
+      key: "1234",
+    },
+    cache: false,
+    succes: function (data) {},
+  });
 }

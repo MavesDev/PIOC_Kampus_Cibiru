@@ -432,14 +432,14 @@
                 </div>
             </div>
 
-            <div class="row mt-5 pt-4">
+            <!-- <div class="row mt-5 pt-4">
                 <div class="col-lg-12">
                     <div class="team-carousel">
                         <div class="team-box p-3">
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
                                     <div class="mt-4">
-                                        <h5 class="mt-2">Alfeus martinus</h5>
+                                        <h5 class="mt-2">Alfeus Martinus</h5>
                                         <p class="team-badge bg-primary text-white rounded f-14 mt-2">#Alfeus</p>
                                         <p class="text-muted mt-3">Anterdum maleada fames Integer molestie ante primis
                                             nulla facibus felis ulputate platea elit.</p>
@@ -464,7 +464,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mt-4">
-                                        <img src="images/users/img-1.png" alt="" class="img-fluid rounded">
+                                        <img src="images/users/Gradient-min.png" alt="" class="img-fluid rounded">
                                     </div>
                                 </div>
                             </div>
@@ -474,7 +474,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
                                     <div class="mt-4">
-                                        <h5 class="mt-2">Rafif aiman</h5>
+                                        <h5 class="mt-2">Rafif Aiman</h5>
                                         <p class="team-badge bg-primary text-white rounded f-14 mt-2"># Rafif</p>
                                         <p class="text-muted mt-3">Anterdum maleada fames Integer molestie ante primis
                                             nulla facibus felis ulputate platea elit.</p>
@@ -499,7 +499,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mt-4">
-                                        <img src="images/users/img-2.png" alt="" class="img-fluid rounded">
+                                        <img src="images/users/rafif.jpg" alt="" class="img-fluid rounded">
                                     </div>
                                 </div>
                             </div>
@@ -509,7 +509,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
                                     <div class="mt-4">
-                                        <h5 class="mt-2">Deyan laudza</h5>
+                                        <h5 class="mt-2">Deyan Laudza</h5>
                                         <p class="team-badge bg-primary text-white rounded f-14 mt-2">#Deyan</p>
                                         <p class="text-muted mt-3">Anterdum maleada fames Integer molestie ante primis
                                             nulla facibus felis ulputate platea elit.</p>
@@ -534,7 +534,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mt-4">
-                                        <img src="images/users/img-3.png" alt="" class="img-fluid rounded">
+                                        <img src="images/users/deyan.jpg" alt="" class="img-fluid rounded">
                                     </div>
                                 </div>
                             </div>
@@ -544,7 +544,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
                                     <div class="mt-4">
-                                        <h5 class="mt-2">Raqhin kusumadinata </h5>
+                                        <h5 class="mt-2">Raqhin Kusumadinata </h5>
                                         <p class="team-badge bg-primary text-white rounded f-14 mt-2">#Raqhin</p>
                                         <p class="text-muted mt-3">Anterdum maleada fames Integer molestie ante primis
                                             nulla facibus felis ulputate platea elit.</p>
@@ -569,7 +569,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mt-4">
-                                        <img src="images/users/img-4.png" alt="" class="img-fluid rounded">
+                                        <img src="images/users/raqhin.jpeg" alt="" class="img-fluid rounded">
                                     </div>
                                 </div>
                             </div>
@@ -579,10 +579,9 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
                                     <div class="mt-4">
-                                        <h5 class="mt-2">Ayub putra ferdian </h5>
+                                        <h5 class="mt-2">Ayub Putra Ferdian </h5>
                                         <p class="team-badge bg-primary text-white rounded f-14 mt-2">#Ayub</p>
-                                        <p class="text-muted mt-3">Anterdum maleada fames Integer molestie ante primis
-                                            nulla facibus felis ulputate platea elit.</p>
+                                        <p class="text-muted mt-3">'ayooob.'</p>
 
                                         <div class="team-social mt-4 pt-2">
                                             <ul class="list-inline mb-0">
@@ -604,7 +603,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mt-4">
-                                        <img src="images/users/img-4.png" alt="" class="img-fluid rounded">
+                                        <img src="images/users/ayub.jpg" alt="" class="img-fluid rounded">
                                     </div>
                                 </div>
                             </div>
@@ -615,7 +614,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
     <!-- END TEAM -->

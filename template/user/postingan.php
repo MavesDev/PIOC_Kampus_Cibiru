@@ -31,30 +31,30 @@ if (isset($_GET["id"])) {
 ?>
 
 <style>
-    .pagination-costum .page-link {
-  color: #1ea59a !important;
-  /* Ubah warna teks */
+.pagination-costum .page-link {
+    color: #1ea59a !important;
+    /* Ubah warna teks */
 }
 
 .pagination-costum .page-link:hover {
-  color: #14857c !important;
-  /* Ubah warna teks saat hover */
-  background-color: #e9ecef;
-  /* Ubah warna background saat hover */
+    color: #14857c !important;
+    /* Ubah warna teks saat hover */
+    background-color: #e9ecef;
+    /* Ubah warna background saat hover */
 }
 
 .pagination-costum .page-link.active {
-  background-color: #1ea59a !important;
-  /* Ubah warna background item aktif */
-  border-color: #1ea59a !important;
-  /* Ubah warna border item aktif */
-  color: white !important;
-  /* Ubah warna teks item aktif */
+    background-color: #1ea59a !important;
+    /* Ubah warna background item aktif */
+    border-color: #1ea59a !important;
+    /* Ubah warna border item aktif */
+    color: white !important;
+    /* Ubah warna teks item aktif */
 }
 
 .pagination-costum .page-item.disabled .page-link {
-  color: #6c757d;
-  /* Ubah warna teks item tidak aktif */
+    color: #6c757d;
+    /* Ubah warna teks item tidak aktif */
 }
 </style>
 
@@ -65,16 +65,16 @@ if (isset($_GET["id"])) {
         if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
             if ($_SESSION['status'] === '<b>Data Berhasil Masuk</b>, Mohon Menunggu Persetujuan Admin') {
         ?>
-                <div class="alert alert-success" role="alert">
-                    <?php echo $_SESSION['status'] ?>
-                </div>
-            <?php
+        <div class="alert alert-success" role="alert">
+            <?php echo $_SESSION['status'] ?>
+        </div>
+        <?php
             } else {
             ?>
-                <div class="alert alert-danger" role="alert">
-                    <?php echo $_SESSION['status'] ?>
-                </div>
-            <?php
+        <div class="alert alert-danger" role="alert">
+            <?php echo $_SESSION['status'] ?>
+        </div>
+        <?php
             }
             ?>
         <?php
@@ -100,10 +100,12 @@ if (isset($_GET["id"])) {
         <div class="row mt-5 pt-4">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
                 <div style="margin-top: 17px;" class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Ketikan Kata Kunci..." aria-label="Recipient's username" aria-describedby="basic-addon2" id="keyword">
+                    <input type="text" class="form-control" placeholder="Ketikan Kata Kunci..."
+                        aria-label="Recipient's username" aria-describedby="basic-addon2" id="keyword">
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         Filter
                     </button>
                     <ul class="dropdown-menu">
@@ -117,7 +119,7 @@ if (isset($_GET["id"])) {
                 <?php
                 include './php/connection.php';
 
-                $jumlahDataPerHalaman = 2;
+                $jumlahDataPerHalaman = 9;
                 $result = mysqli_query($conn, "SELECT * FROM postingan WHERE status = 'Approved'");
                 $jumlahData = mysqli_num_rows($result);
                 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
@@ -135,63 +137,68 @@ if (isset($_GET["id"])) {
 
                 ?>
                 <?php if (mysqli_num_rows($fetch_image_query_run) > 0) : ?>
-                    <?php foreach ($fetch_image_query_run as $data) : ?>
-                        <?php $idPost = $data['id_postingan'] ?>
-                        <?php
+                <?php foreach ($fetch_image_query_run as $data) : ?>
+                <?php $idPost = $data['id_postingan'] ?>
+                <?php
                         $bookmarkQuery = "SELECT * FROM bookmark WHERE id_user = $user_id AND id_postingan = $idPost";
                         $bookmarkResult = mysqli_query($conn, $bookmarkQuery);
                         $isBookmarked = mysqli_num_rows($bookmarkResult) > 0;
                         ?>
 
-                        <div class="col-lg-4" id="container-post">
-                            <div class="services-box p-4 mt-4" max-height="500px">
-                                <a href=" detail.php?id_post=<?= $data['id_postingan'] ?>">
-                                    <img src="imgUpload/<?= $data['gambar']; ?>" class="img-thumbnail mx-auto d-block" alt="random-image" style="max-height: 200px; max-width: 360px;">
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <a href=" detail.php?id_post=<?= $data['id_postingan'] ?>">
-                                        <h5 class="mt-4 text-primary"><?= $data['nama_kegiatan']; ?>
-                                        </h5>
-                                    </a>
-                                    <?php
+                <div class="col-lg-4" id="container-post">
+                    <div class="services-box p-4 mt-4" max-height="500px">
+                        <a href=" detail.php?id_post=<?= $data['id_postingan'] ?>">
+                            <img src="imgUpload/<?= $data['gambar']; ?>" class="img-thumbnail mx-auto d-block"
+                                alt="random-image" style="max-height: 200px; max-width: 360px;">
+                        </a>
+                        <div class="d-flex justify-content-between">
+                            <a href=" detail.php?id_post=<?= $data['id_postingan'] ?>">
+                                <h5 class="mt-4 text-primary"><?= $data['nama_kegiatan']; ?>
+                                </h5>
+                            </a>
+                            <?php
                                     $id_kategori = $data['id_kategori'];
                                     // var_dump(query("SELECT nama_kategori FROM kategori WHERE id_kategori = $id_kategori"));
                                     $kategori = query("SELECT nama_kategori FROM kategori WHERE id_kategori = $id_kategori")[0];
                                     ?>
-                                    <p class="mt-4 text-primary"><?= $kategori["nama_kategori"] ?></p>
-                                </div>
-                                <div class="post-costum">
-                                    <p style="height: 86px;" class="text-muted mt-3"><?= $data['deskripsi']; ?></p>
-                                </div>
-                                <?php $idPost = $data['id_postingan'] ?>
-                                <div class="mt-3 d-flex justify-content-between">
-                                    <div>
-                                        <a href="post.php?id=<?= $_SESSION["id_user"] ?>&id_post=<?= $data["id_postingan"] ?>" class="text-primary f-4" class="btn btn-primary" name="like">
-                                            <i class="mdi mdi-heart"></i>
-                                            <?php $result = query("SELECT COUNT(id_suka) AS jumlahLike FROM `suka` WHERE id_postingan = $idPost"); ?>
-                                            <small><?= $result[0]["jumlahLike"] ?></small>
-                                        </a>
-                                        <a href="comment.php?id_post=<?= $data["id_postingan"] ?>" class="text-primary f-4" class="btn btn-primary">
-                                            <i class="mdi mdi-comment ms-2"></i>
-                                            <?php $result = query("SELECT COUNT(id_komentar) AS jumlahKomentar FROM `komentar` WHERE id_postingan = $idPost"); ?>
-                                            <small><?= $result[0]["jumlahKomentar"] ?></small>
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <?php if ($isBookmarked) : ?>
-                                            <a href="./php/bookmark.php?action=unbookmark&id_post=<?= $data["id_postingan"] ?>" class="btn btn-danger" title="Unbookmark">
-                                                <i class="mdi mdi-bookmark"></i> Unbookmark
-                                            </a>
-                                        <?php else : ?>
-                                            <a href="./php/bookmark.php?action=bookmark&id_post=<?= $data["id_postingan"] ?>" class="btn btn-primary" title="Bookmark">
-                                                <i class="mdi mdi-bookmark-outline"></i> Bookmark
-                                            </a>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
+                            <p class="mt-4 text-primary"><?= $kategori["nama_kategori"] ?></p>
+                        </div>
+                        <div class="post-costum">
+                            <p style="height: 86px;" class="text-muted mt-3"><?= $data['deskripsi']; ?></p>
+                        </div>
+                        <?php $idPost = $data['id_postingan'] ?>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <div>
+                                <a href="post.php?id=<?= $_SESSION["id_user"] ?>&id_post=<?= $data["id_postingan"] ?>"
+                                    class="text-primary f-4" class="btn btn-primary" name="like">
+                                    <i class="mdi mdi-heart"></i>
+                                    <?php $result = query("SELECT calc_like($idPost) AS jumlahLike"); ?>
+                                    <small><?= $result[0]["jumlahLike"] ?></small>
+                                </a>
+                                <a href="comment.php?id_post=<?= $data["id_postingan"] ?>" class="text-primary f-4"
+                                    class="btn btn-primary">
+                                    <i class="mdi mdi-comment ms-2"></i>
+                                    <?php $result = query("SELECT COUNT(id_komentar) AS jumlahKomentar FROM `komentar` WHERE id_postingan = $idPost"); ?>
+                                    <small><?= $result[0]["jumlahKomentar"] ?></small>
+                                </a>
+                            </div>
+                            <div>
+                                <?php if ($isBookmarked) : ?>
+                                <a href="./php/bookmark.php?action=unbookmark&id_post=<?= $data["id_postingan"] ?>"
+                                    class="btn btn-danger" title="Unbookmark">
+                                    <i class="mdi mdi-bookmark"></i> Unbookmark
+                                </a>
+                                <?php else : ?>
+                                <a href="./php/bookmark.php?action=bookmark&id_post=<?= $data["id_postingan"] ?>"
+                                    class="btn btn-primary" title="Bookmark">
+                                    <i class="mdi mdi-bookmark-outline"></i> Bookmark
+                                </a>
+                                <?php endif; ?>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
+                </div>
+                <?php endforeach; ?>
                 <?php endif; ?>
             </div>
 
@@ -199,30 +206,30 @@ if (isset($_GET["id"])) {
         <nav aria-label="Page navigation example" class="mt-5">
             <ul class="pagination pagination-costum justify-content-center">
                 <?php if ($activePage > 1) : ?>
-                    <li class="page-item">
-                        <a class="page-link" href="?page=<?= $activePage - 1; ?>">Previous</a>
-                    </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<?= $activePage - 1; ?>">Previous</a>
+                </li>
                 <?php else : ?>
-                    <li class="page-item disabled">
-                        <a class="page-link">Previous</a>
-                    </li>
+                <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                </li>
                 <?php endif; ?>
                 <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
-                    <?php if ($i == $activePage) : ?>
-                        <li class=" page-item"><a class="page-link active" href="?page=<?= $i; ?>"><?= $i ?></a>
-                        </li>
-                    <?php else : ?>
-                        <li class="page-item"><a class="page-link" href="?page=<?= $i; ?>"><?= $i ?></a></li>
-                    <?php endif; ?>
+                <?php if ($i == $activePage) : ?>
+                <li class=" page-item"><a class="page-link active" href="?page=<?= $i; ?>"><?= $i ?></a>
+                </li>
+                <?php else : ?>
+                <li class="page-item"><a class="page-link" href="?page=<?= $i; ?>"><?= $i ?></a></li>
+                <?php endif; ?>
                 <?php endfor; ?>
                 <?php if ($activePage < $jumlahHalaman) : ?>
-                    <li class="page-item">
-                        <a class="page-link" href="?page=<?= $activePage + 1; ?>">Next</a>
-                    </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<?= $activePage + 1; ?>">Next</a>
+                </li>
                 <?php else : ?>
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">Next</a>
+                </li>
                 <?php endif; ?>
             </ul>
         </nav>
