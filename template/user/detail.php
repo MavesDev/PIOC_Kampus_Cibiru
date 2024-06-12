@@ -19,7 +19,7 @@ $data = $_GET["id_post"];
             <?= $data['deskripsi'];?>
         </p>
         <div class="mt-3">
-            <a href="post.php?id=<?= $_SESSION["id"] ?>&id_post=<?= $idPost ?>" class="text-primary f-2"
+            <a href="post.php?id=<?= $_SESSION["id_user"] ?>&id_post=<?= $idPost ?>" class="text-primary f-2"
                 class="btn btn-primary" name="like">
                 <i class="mdi mdi-heart"></i>
                 <?php $result = query("SELECT COUNT(id_suka) AS jumlahLike FROM `suka` WHERE id_postingan = $idPost"); ?>

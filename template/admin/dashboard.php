@@ -121,6 +121,7 @@
 
                                 <form action="acc.php" method="get"
                                     onsubmit="return confirm('Yakin ingin mengizinkan postingan?');">
+                                    <input type="hidden" name="id_user" value="<?= $data['id_user'] ?>">
                                     <input type="hidden" name="number" value="<?= $data['id_postingan'] ?>">
                                     <button type="submit" class="btn btn-success">Terima Postingan</button>
                                 </form>

@@ -6,11 +6,11 @@ if ($_POST) {
     $alasan = $_POST['alasan'];
 
     $updateQuery = "UPDATE postingan SET status='Rejected' WHERE id_postingan='$id_postingan'";
-    $updateResult = mysqli_query($koneksi, $updateQuery);
+    $updateResult = mysqli_query($conn, $updateQuery);
 
     if ($updateResult) {
         $postQuery = "SELECT id_user, nama_kegiatan FROM postingan WHERE id_postingan='$id_postingan'";
-        $postResult = mysqli_query($koneksi, $postQuery);
+        $postResult = mysqli_query($conn, $postQuery);
         $postData = mysqli_fetch_assoc($postResult);
 
         $id_user = $postData['id_user'];
@@ -19,9 +19,9 @@ if ($_POST) {
         $notifQuery = "INSERT INTO notifikasi (
                             id_user, status, date, type, url, uniqueid, notif_table, dilihat, message
                         ) VALUES (
-                            '$id_user', 'nonactive', NOW(), 'Post Rejected', 'notif.php', '$id_postingan', 'postingan', 'unseen', 'Postingan anda \"$nama_kegiatan\" ditolak. Karena: $alasan'
+                            '$id_user', 'nonactive', NOW(), 'Maaf, postingan Anda tidak sesuai dengan pedoman kami saat ini. Terima kasih atas pengertian Anda.', 'notif.php', '$id_postingan', 'postingan', 'unseen', 'Postingan anda \"$nama_kegiatan\" ditolak. Karena: $alasan'
                         )";
-        mysqli_query($koneksi, $notifQuery);
+        mysqli_query($conn, $notifQuery);
 
         header("Location: dashboard.php?status=success");
     } else {

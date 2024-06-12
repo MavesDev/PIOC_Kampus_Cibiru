@@ -7,15 +7,16 @@ if(isset($_POST['save_data'])){
     $judul = $_POST['judul'];
     $deskripsi = $_POST['deskripsi'];
     $kategori = $_POST['kategori'];
-    $waktu = date("Y-m-d H:i:s");
-
+    $datetime = new DateTime("now", new DateTimeZone("Asia/Jakarta"));
+    $waktu = $datetime->format("Y-m-d H:i:s");
+    $id_user = $_SESSION["id_user"];
 
     if (file_exists("../imgUpload/".$_FILES['gambar']['name'])) {
         $fileName = $_FILES['gambar']['name'];
         $_SESSION['status'] = "Maaf "."<b>$fileName</b>"." Telah Tersedia, Silahkan Ganti Nama File Gambar";
         header("location: ../post.php");
     } else {
-        $insert_query = "CALL AddNewPost('$judul','$gambar','$deskripsi','0','$waktu','$kategori','1','Test','0','1')";
+        $insert_query = "CALL AddNewPost('$judul','$gambar','$deskripsi','0','$waktu','$kategori','$id_user','Test','0','1')";
 
         $insert_query_run = mysqli_query($connection, $insert_query);
     

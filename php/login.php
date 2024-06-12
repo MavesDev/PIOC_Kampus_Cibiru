@@ -1,42 +1,53 @@
 <?php
-session_start();
-$servername = "localhost"; // Ganti dengan nama server database Anda
-$username = "root"; // Ganti dengan username database Anda
-$password = ""; // Ganti dengan password database Anda
-$dbname = "pioc"; // Ganti dengan nama database Anda
+include "code.php"; 
+include "../php/connection.php"; 
 
-// Membuat koneksi ke database
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Mengecek koneksi
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Menyiapkan query SQL untuk memeriksa email dan password
-    $sql = "SELECT * FROM user WHERE email = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $email, $password);
+    // Menyiapkan query SQL untuk memeriksa email
+    $sql = "SELECT * FROM user WHERE email = ?";
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     // Memeriksa apakah ada hasil yang cocok
     if ($result->num_rows > 0) {
-        // Login berhasil
-        $_SESSION['email'] = $email;
-        header("Location: ../post.php"); // Ganti dengan halaman setelah login
-        exit();
+        $row = $result->fetch_assoc();
+        
+        // Cek Password salah atau tidak
+        if ($password == $row['password']) {
+            // Login berhasil
+            $_SESSION['email'] = $email;
+            $_SESSION['id_user'] = $row["id_user"];
+            $_SESSION['nama_user'] = $row["nama_user"];
+            $_SESSION['bio'] = $row['bio'];
+            $_SESSION['role'] = $row['role'];
+            $_SESSION['password'] = $row['password'];
+
+            // Uji Level
+            if ($row['role'] == 'Admin') {
+                $_SESSION['admin'] = $email;
+                header("Location: ../dashboard.php");
+            } else if ($row['role'] == 'user') {
+                $_SESSION['user'] = $email;
+                header("Location: ../post.php");
+            }
+            exit();
+        } else {
+            // Password salah
+            echo "Password salah.";
+        }
     } else {
-        // Login gagal
-        echo "Email atau password salah.";
+        // Email tidak ditemukan
+        echo "Email tidak ada.";
     }
 
     $stmt->close();
 }
 
-$conn->close();
+$connection->close();
 ?>

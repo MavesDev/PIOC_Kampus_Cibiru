@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Siapkan dan bind
-    $stmt = $conn->prepare("INSERT INTO user (nama_user, email, password, role) VALUES (?, ?, ?, 'User')");
+    $stmt = $conn->prepare("INSERT INTO user (nama_user, email, password, role, gambar) VALUES (?, ?, ?, 'user', 'no-profile.jpg')");
     if ($stmt === false) {
         die("Prepare failed: " . $conn->error);
     }

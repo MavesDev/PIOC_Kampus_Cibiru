@@ -1,7 +1,7 @@
 <?php
 include "php/code.php";
 
-$_POST["id_user"] = $_SESSION["id"];
+$_POST["id_user"] = $_SESSION["id_user"];
 
 if( isset($_POST["addComment"]) ) {
     if(add($_POST) > 0) {
@@ -44,11 +44,11 @@ $results = query("SELECT * FROM `komentar` WHERE id_postingan = $data_postingan"
         <?php foreach ($results as $data) : ?>
         <?php
              $id = $data["id_user"];
-             $dataUser = query("SELECT nama_user AS NamaUser FROM user WHERE id_user = $id");     
+             $dataUser = query("SELECT nama_user AS NamaUser, gambar FROM user WHERE id_user = $id");    
         ?>
         <div class="d-flex align-middle mb-3" style="width: 100%;">
             <div class="img-comment me-3">
-                <img src="https://picsum.photos/50" class="rounded" alt="random-image">
+                <img src="imgProfile/<?= $dataUser[0]['gambar']?>" class="rounded" alt="random-image" style="height: 40px; width: 40px;">
             </div>
             <div>
                 <div class="main-comment d-flex flex-column">
@@ -68,7 +68,7 @@ $results = query("SELECT * FROM `komentar` WHERE id_postingan = $data_postingan"
                     ?>
                     <div class="d-flex align-middle justify-content-center mb-3">
                         <div class="img-comment me-3">
-                            <img src="https://picsum.photos/40" class="rounded" alt="random-image">
+                            <img src="imgProfile/<?= $dataUser[0]['gambar']?>" class="rounded" alt="random-image" style="height: 40px; width: 40px;">
                         </div>
                         <div>
                             <div class="main-comment" style="font-size: 0.9rem;">
@@ -78,7 +78,7 @@ $results = query("SELECT * FROM `komentar` WHERE id_postingan = $data_postingan"
                                 </p>
                             </div>
                             <div class="d-flex">
-                                <a href="comment.php?reply_id=" id="2" class="text-secondary me-2"><i
+                                <a href="comment.php?reply_id=<?= $data['id_komentar'] ?>&id_post=<?= $data["id_postingan"] ?>" id="2" class="text-secondary me-2"><i
                                         class="mdi mdi-reply me-1"></i><small class="text-muted me-1">Reply</small></a>
                                 <p style="margin-bottom: 0;"><small class="text-muted">Last updated 3 mins
                                         ago</small></p>
@@ -88,8 +88,6 @@ $results = query("SELECT * FROM `komentar` WHERE id_postingan = $data_postingan"
                     <?php endforeach; ?>
 
                 </div>
-                <a href="" class="text-secondary me-2"><small class="text-muted me-1">Sembunyikan
-                        balasan</small></a>
                 <div class="d-flex">
                     <a href="comment.php?reply_id=<?= $data['id_komentar'] ?>&id_post=<?= $data["id_postingan"] ?>"
                         class="text-secondary me-2"><i class="mdi mdi-reply me-1"></i><small
