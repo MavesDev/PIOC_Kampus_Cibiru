@@ -16,6 +16,7 @@
                 var_dump("query berhasil");
             }
 
+            
             exit();
         } else {
             echo "Failed to update post status.";

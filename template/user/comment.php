@@ -64,11 +64,11 @@ $results = query("SELECT * FROM `komentar` WHERE id_postingan = $data_postingan"
                     <?php foreach ($resultsReply as $datas) : ?>
                     <?php
                         $idReply = $datas["id_user"];
-                        $dataReply = query("SELECT nama_user AS NamaReply FROM user WHERE id_user = $idReply");     
+                        $dataReply = query("SELECT nama_user AS NamaReply, gambar FROM user WHERE id_user = $idReply");     
                     ?>
                     <div class="d-flex align-middle justify-content-center mb-3">
                         <div class="img-comment me-3">
-                            <img src="imgProfile/<?= $dataUser[0]['gambar']?>" class="rounded" alt="random-image" style="height: 40px; width: 40px;">
+                            <img src="imgProfile/<?= $dataReply[0]['gambar']?>" class="rounded" alt="random-image" style="height: 40px; width: 40px;">
                         </div>
                         <div>
                             <div class="main-comment" style="font-size: 0.9rem;">

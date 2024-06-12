@@ -1,4 +1,4 @@
-    <?php
+<?php
     include "php/connection.php";
     $row = mysqli_query($conn, "SELECT * FROM postingan WHERE status = '0'");
     $no = 1;
@@ -21,7 +21,6 @@
                         <th scope="col">ID_Kategori</th>
                         <th scope="col">ID_User</th>
                         <th scope="col">Jenis_Postingan</th>
-                        <th scope="col">Harga</th>
                         <th scope="col">Suka</th>
                     </tr>
                 </thead>
@@ -46,7 +45,6 @@
                         <td><?= $data['id_kategori'] ?></td>
                         <td><?= $data['id_user'] ?></td>
                         <td><?= $data['jenis_postingan'] ?></td>
-                        <td><?= $data['harga'] ?></td>
                         <td><?= $data['suka'] ?></td>
                         <td>
                             <form action="hapus_post.php" method="get"

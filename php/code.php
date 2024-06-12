@@ -95,4 +95,16 @@ function addLike($data) {
     return mysqli_affected_rows($connection);
 }
 
+function mark_notif($data) {
+    global $connection;
+
+    $id_user = $data;
+
+    $query = "UPDATE `notifikasi` SET `dilihat`='seen' WHERE id_user = $id_user";
+    
+    mysqli_query($connection, $query);
+
+    return mysqli_affected_rows($connection);
+}
+
 ?>

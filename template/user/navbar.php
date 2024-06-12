@@ -1,5 +1,9 @@
 <?php
     include_once "php/code.php";
+
+    if (isset($_GET["id_notif"])) {
+        mark_notif($_GET["id_notif"]);
+    }
 ?>
 
 <!--Navbar Start-->
@@ -20,34 +24,39 @@
                     <?php if (isset($_SESSION["nama_user"])) : ?>
                     <button type="button" class="btn btn-primary position-relative p-2" id="nf-btn">
                         <i class="bi bi-bell"></i>
-                        <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="numHead">
-                                99+
-                                 <span class="visually">unread messages</span> 
-                            </span> -->
+                        <?php
+                            $data_user = $_SESSION["id_user"];
+                            $mark_notif = query("SELECT * FROM `notifikasi` WHERE dilihat = 'unseen' AND id_user = $data_user");
+                        ?>
+
+                        <?php if (!empty($mark_notif)) : ?>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            id="numHead">
+                            !
+                            <!-- <span class="visually">unread messages</span> -->
+                        </span>
                         <?php endif; ?>
                     </button>
+                    <?php endif; ?>
                     <div class="rounded me-5" style="position: absolute; z-index: 9999; margin-left: -10rem">
                         <div class="nf-message border-success mt-3 shadow p-3 mb-5 bg-body-tertiary rounded w-100 p-3"
                             id="notifications" style="max-height: 40em; overflow-y: auto;">
+                            <a href="?id_notif=<?= $_SESSION["id_user"] ?>" class="text-primary">Tandai Sudah Dibaca</a>
                             <?php
                                 $data_user = $_SESSION["id_user"];
                                 $data_notif = query("SELECT * FROM `notifikasi` WHERE id_user = $data_user");
                             ?>
 
                             <?php if (empty($data_notif)) : ?>
-                            <a href="#">
-                                <div class="text-black">
-                                    👋Halo!, <b>Tidak Ada Notifikasi Terbaru untuk Saat Ini Yah</b>, Mohon Cek Secara
-                                    Berkala untuk Persetujuan dari Permintaan Postingan Kamu Yah🤩
-                                </div>
-                            </a>
+                            <div class="text-black">
+                                👋Halo!, <b>Tidak Ada Notifikasi Terbaru untuk Saat Ini Yah</b>, Mohon Cek Secara
+                                Berkala untuk Persetujuan dari Permintaan Postingan Kamu Yah🤩
+                            </div>
                             <?php else : ?>
                             <?php foreach ($data_notif as $data) : ?>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <div class="alert alert-success" role="alert">
-                                    <?= htmlspecialchars($data["type"]) ?>
-                                </div>
-                            </a>
+                            <div class="alert alert-success" role="alert">
+                                <?= htmlspecialchars($data["type"]) ?>
+                            </div>
                             <?php endforeach; ?>
                             <?php endif; ?>
                         </div>

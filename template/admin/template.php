@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "php/code.php";
 
 if (!isset($_SESSION['admin'])) {
   header("Location:login.php");
@@ -52,8 +52,18 @@ if (!isset($_SESSION['admin'])) {
 
             <ul class="sidebar-list">
                 <a href="dashboard.php" style="text-decoration-line: none; color:#9799ab ">
-                    <li class="sidebar-list-item">
-                        <span class="material-icons-outlined">dashboard</span> Dashboard
+                    <li class="sidebar-list-item d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="material-icons-outlined">dashboard</span> Dashboard
+                        </div>
+                        <?php
+                            $data_user = $_SESSION["id_user"];
+                            $mark_notif = query("SELECT * FROM `postingan` WHERE status = '0'");
+                        ?>
+
+                        <?php if (!empty($mark_notif)) : ?>
+                        <span class="badge rounded-pill bg-danger" id="numHead"> ! </span>
+                        <?php endif; ?>
                     </li>
                 </a>
 

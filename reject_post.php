@@ -19,7 +19,7 @@ if ($_POST) {
         $notifQuery = "INSERT INTO notifikasi (
                             id_user, status, date, type, url, uniqueid, notif_table, dilihat, message
                         ) VALUES (
-                            '$id_user', 'nonactive', NOW(), 'Maaf, postingan Anda tidak sesuai dengan pedoman kami saat ini. Terima kasih atas pengertian Anda.', 'notif.php', '$id_postingan', 'postingan', 'unseen', 'Postingan anda \"$nama_kegiatan\" ditolak. Karena: $alasan'
+                            '$id_user', 'nonactive', NOW(), 'Maaf, postingan Anda tidak sesuai dengan pedoman kami saat ini. Terima kasih atas pengertian Anda. Postingan anda \"$nama_kegiatan\" ditolak. Karena: $alasan', 'notif.php', '$id_postingan', 'postingan', 'unseen', 'Postingan anda \"$nama_kegiatan\" ditolak. Karena: $alasan'
                         )";
         mysqli_query($conn, $notifQuery);
 
